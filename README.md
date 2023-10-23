@@ -4,7 +4,7 @@
 
 ## Commons
 
-- [ ] feature1/molecules
-- [ ] feature2/organisms
-- [ ] feature3/layouts
+- [ ] feature1/layouts
+- [ ] feature2/molecules
+- [ ] feature3/organisms
 - [ ] feature4/pages
