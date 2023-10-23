@@ -1,23 +1,22 @@
 import type { AppProps } from "next/app";
 import { appWithTranslation } from "next-i18next";
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 import chakraColorModeConfig from "@/commons/theme/config.theme";
 import { customTheme } from "@/commons/theme/customTheme.theme";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import { queryClient } from "@/commons/libraries/react-query/react-query";
+import Layouts from "@/components/layouts";
 
 const App = ({ Component, pageProps }: AppProps) => {
-  const queryClient = new QueryClient();
   const router = useRouter();
 
   useEffect(() => {
     const preferredLocale = Cookies.get("locale");
-
     if (!preferredLocale) {
       Cookies.set("locale", "ko");
-
       router.push(router.pathname, router.asPath, {
         locale: "ko",
       });
@@ -34,7 +33,9 @@ const App = ({ Component, pageProps }: AppProps) => {
         <ColorModeScript
           initialColorMode={chakraColorModeConfig.initialColorMode}
         />
-        <Component {...pageProps} />
+        <Layouts>
+          <Component {...pageProps} />
+        </Layouts>
       </QueryClientProvider>
     </ChakraProvider>
   );
