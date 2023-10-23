@@ -1,4 +1,4 @@
-import { Container } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { ReactNode } from "react";
 
 interface IMainLayoutProps {
@@ -7,8 +7,8 @@ interface IMainLayoutProps {
 
 export default function MainLayout({ children }: IMainLayoutProps) {
   return (
-    <Container as="main" p={0} width="100%">
+    <Box as="main" p={0} m={0} width="100%">
       {children}
-    </Container>
+    </Box>
   );
 }

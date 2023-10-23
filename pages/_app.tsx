@@ -9,18 +9,17 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { queryClient } from "@/commons/libraries/react-query/react-query";
 import Layouts from "@/components/layouts";
+import { RecoilRoot } from "recoil";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
 
   useEffect(() => {
     const preferredLocale = Cookies.get("locale");
-    if (!preferredLocale) {
-      Cookies.set("locale", "ko");
-      router.push(router.pathname, router.asPath, {
-        locale: "ko",
-      });
-    } else {
+
+    console.log(preferredLocale);
+
+    if (preferredLocale) {
       router.push(router.pathname, router.asPath, {
         locale: preferredLocale,
       });
@@ -29,14 +28,16 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <ChakraProvider theme={customTheme}>
-      <QueryClientProvider client={queryClient}>
-        <ColorModeScript
-          initialColorMode={chakraColorModeConfig.initialColorMode}
-        />
-        <Layouts>
-          <Component {...pageProps} />
-        </Layouts>
-      </QueryClientProvider>
+      <RecoilRoot>
+        <QueryClientProvider client={queryClient}>
+          <ColorModeScript
+            initialColorMode={chakraColorModeConfig.initialColorMode}
+          />
+          <Layouts>
+            <Component {...pageProps} />
+          </Layouts>
+        </QueryClientProvider>
+      </RecoilRoot>
     </ChakraProvider>
   );
 };
