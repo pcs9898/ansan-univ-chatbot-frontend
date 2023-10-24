@@ -6,8 +6,8 @@ export default function CustomAvatar({}) {
 
   return (
     <Flex alignItems="center" gap="0.25rem">
-      <Avatar src="/avatarImage.png" />
-      <Text fontWeight="medium" fontSize="0.875rem">
+      <Avatar src="/avatarImage.png" w="2.5rem" h="2.5rem" />
+      <Text fontWeight="bold" fontSize="0.875rem">
         {t("customAvatarName")}
       </Text>
     </Flex>

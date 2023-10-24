@@ -8,34 +8,115 @@ import CustomCard from "@/components/molecules/customCard";
 import FormatTime from "@/components/molecules/formatTime";
 import GreetingCard from "@/components/molecules/greetingCard";
 import GreetingImage from "@/components/molecules/greetingImage";
-import GreetingMsg from "@/components/molecules/greetingMsg";
+import GreetingMsg from "@/components/molecules/greetingMessage";
 
 import MyMessage from "@/components/molecules/myMessage";
-import MsgInput from "@/components/molecules/msgInput";
+import MsgInput from "@/components/molecules/messageInput";
 import LoadingMessage from "@/components/molecules/loadingMessage";
+import FailMessage from "@/components/molecules/failMessage";
+import Cards from "@/components/organisms/customCards";
+import Fail from "@/components/organisms/greetingOrFail";
+import GreetingOrFail from "@/components/organisms/greetingOrFail";
+import Header from "@/components/organisms/header";
+import MyMessageWithFormat from "@/components/organisms/myMessageWithFormat";
 
 export const getStaticProps = withTranslations();
 
-const testData = {
-  texts: [
-    "학사일정이 궁금하신가요?📆",
-    "학사일정 페이지에서 등록, 수강, 시험, 휴복학, 졸업 등 연간 학사 일정을 확인할 수 있어요.",
-    "",
-    "등록금 납부 일정 및 방법이 궁금하신가요?",
-    "👇아래 버튼을 눌러 학부 등록금 납부 일정 및 납부 방법에 관한 더 자세한 내용을 확인해보세요.",
-  ],
+const testData = [
+  {
+    texts: [
+      "도서관에 오신 것을 환영합니다!",
+      "",
+      "도서관에 대한 궁금증이 있다면 언제든지 찾아주세요.",
+      "",
+      "📞전화번호:031-400-7073",
+      "📌위치:라키비움관(도서관)",
+    ],
+    buttons: [
+      {
+        buttonText: "라키비움관(도서관) 홈페이지",
+        link: "https://lib.ansan.ac.kr/",
+      },
+      {
+        buttonText: "라키비움관(도서관) 시설",
+        link: "https://lib.ansan.ac.kr/local/html/facility",
+      },
+      {
+        link: "https://www.ansan.ac.kr/www/content/106",
+        buttonText: "라키비움관(도서관) 찾아오시는길",
+      },
+    ],
+  },
+  {
+    texts: ["(1/2)"],
+    buttons: [
+      {
+        buttonText: "자료대출기준",
+        postBack: "자료대출기준",
+      },
+      {
+        buttonText: "자료반납",
+        postBack: "자료반납",
+      },
+      {
+        buttonText: "자료예약",
+        postBack: "자료예약",
+      },
+    ],
+  },
+  {
+    texts: ["(2/2)"],
+    buttons: [
+      {
+        buttonText: "도서관 개관시간",
+        postBack: "도서관 개관시간",
+      },
+      {
+        buttonText: "도서관 시설안내",
+        postBack: "도서관 시설안내",
+      },
+      {
+        postBack: "도서관 연락처",
+        buttonText: "도서관 연락처",
+      },
+    ],
+  },
+  {
+    texts: ["(2/2)"],
+    buttons: [
+      {
+        buttonText: "도서관 개관시간",
+        postBack: "도서관 개관시간",
+      },
+      {
+        buttonText: "도서관 시설안내",
+        postBack: "도서관 시설안내",
+      },
+      {
+        postBack: "도서관 연락처",
+        buttonText: "도서관 연락처",
+      },
+    ],
+  },
+];
+
+const testData2 = {
   buttons: [
     {
-      buttonText: "등록금 납부 안내",
-      link: "https://www.ansan.ac.kr/www/boardview/11/3488",
+      buttonText: "도서관 개관시간",
+      postBack: "도서관 개관시간",
     },
     {
-      buttonText: "등록금 납부 안내",
-      postBack: "regi",
+      buttonText: "도서관 시설안내",
+      postBack: "도서관 시설안내",
+    },
+    {
+      postBack: "도서관 연락처",
+      buttonText: "도서관 연락처",
     },
   ],
+  texts: ["(2/2)"],
 };
-
 export default function Home() {
   const { t } = useTranslation();
 
@@ -50,16 +131,10 @@ export default function Home() {
         />
         <meta property="og:image" content="/public/ogImage.png" />
       </Head>
-      <CustomAvatar />
-      <CustomCard customCardProps={testData} />
-      <FormatTime />
 
-      <GreetingCard />
-      <GreetingImage />
-      <GreetingMsg />
-      <MyMessage text="학사일정 알려주세요" />
-      <MsgInput isButtonLoading={true} />
-      <LoadingMessage />
+      {/* <Cards cardsProps={testData} /> */}
+      <GreetingOrFail greetingOrFailOption="greeting" />
+      <MyMessageWithFormat text="학사일정 알려주세요" />
     </>
   );
 }

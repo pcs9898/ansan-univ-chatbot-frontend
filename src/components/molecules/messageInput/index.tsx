@@ -4,11 +4,11 @@ import { useTranslation } from "next-i18next";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import BeatLoader from "react-spinners/BeatLoader";
 
-interface IMsgInputProps {
+interface IMessageInputProps {
   isButtonLoading: boolean;
 }
 
-export default function MsgInput({ isButtonLoading }: IMsgInputProps) {
+export default function MessageInput({ isButtonLoading }: IMessageInputProps) {
   const { t } = useTranslation();
 
   return (

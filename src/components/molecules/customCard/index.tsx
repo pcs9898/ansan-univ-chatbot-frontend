@@ -1,3 +1,4 @@
+import { openPageInNewTab } from "@/commons/utils/openPageInNewTab";
 import { Box, Button, Card, Flex, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
@@ -23,6 +24,7 @@ export default function CustomCard({ customCardProps }: ICustomCardProps) {
       bgColor="blue.50"
       //   maxW="16rem"
       w={{ base: "45%", md: "30%" }}
+      minW={{ base: "16rem", md: "30%" }}
     >
       <Box>
         {texts.map((text, i) => {
@@ -30,7 +32,7 @@ export default function CustomCard({ customCardProps }: ICustomCardProps) {
             return <Text key={i}>&nbsp;</Text>;
           }
           return (
-            <Text key={i} fontSize="0.875rem" fontWeight="normal">
+            <Text key={i} fontSize="0.875rem" fontWeight="medium">
               {text}
             </Text>
           );
@@ -42,12 +44,11 @@ export default function CustomCard({ customCardProps }: ICustomCardProps) {
             <Button
               key={i}
               fontSize="0.875rem"
-              fontWeight="medium"
+              fontWeight="semibold"
               bgColor="white"
               color="black"
               w="100%"
-              as={Link}
-              href={button.link}
+              onClick={() => button.link && openPageInNewTab(button.link)}
             >
               {button.buttonText}
             </Button>
@@ -55,7 +56,7 @@ export default function CustomCard({ customCardProps }: ICustomCardProps) {
             <Button
               key={i}
               fontSize="0.875rem"
-              fontWeight="medium"
+              fontWeight="semibold"
               bgColor="white"
               color="black"
               w="100%"

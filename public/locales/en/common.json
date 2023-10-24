@@ -21,5 +21,7 @@
   "customCardText4": "Press the button below to check it out right away.😉",
   "customCardButton1": "Go to Academic Calendar (Calendar View)",
   "customCardButton2": "Go to Academic Calendar (List View)",
-  "msgInputText": "Enter your question"
+  "msgInputText": "How can i help you?",
+  "failMessage1": "I didn't understand it well 😥",
+  "failMessage2": "If you ask me a simple sentence or keyword about academic information, student support, IT/technical support, I can understand better!"
 }

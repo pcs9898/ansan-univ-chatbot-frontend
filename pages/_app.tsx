@@ -10,14 +10,13 @@ import { useRouter } from "next/router";
 import { queryClient } from "@/commons/libraries/react-query/react-query";
 import Layouts from "@/components/layouts";
 import { RecoilRoot } from "recoil";
+import nextI18NextConfig from "../next-i18next.config.js";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
 
   useEffect(() => {
     const preferredLocale = Cookies.get("locale");
-
-    console.log(preferredLocale);
 
     if (preferredLocale) {
       router.push(router.pathname, router.asPath, {
@@ -42,4 +41,4 @@ const App = ({ Component, pageProps }: AppProps) => {
   );
 };
 
-export default appWithTranslation(App);
+export default appWithTranslation(App, nextI18NextConfig);

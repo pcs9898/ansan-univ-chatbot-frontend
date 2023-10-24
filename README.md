@@ -6,5 +6,9 @@
 
 - [x] feature1/layouts
 - [x] feature2/molecules
-- [ ] feature3/organisms
+- [x] feature3/organisms
 - [ ] feature4/pages
+
+## Optimization
+
+- [ ]

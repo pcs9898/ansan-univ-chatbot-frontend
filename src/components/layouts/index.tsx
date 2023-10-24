@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import MainLayout from "./main";
+import Header from "../organisms/header";
 
 interface ILayoutsProps {
   children: ReactNode;
@@ -8,7 +9,7 @@ interface ILayoutsProps {
 export default function Layouts({ children }: ILayoutsProps) {
   return (
     <>
-      {/* //Header */}
+      <Header />
       <MainLayout>{children}</MainLayout>
     </>
   );

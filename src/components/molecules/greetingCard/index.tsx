@@ -43,7 +43,7 @@ export default function GreetingCard() {
         gap="0.625rem"
         bgColor="blue.50"
         p="0.5rem"
-        w={{ base: "65%", md: "50%" }}
+        w={{ base: "75%", md: "50%" }}
       >
         {GreetingCardButtonIcons.map((iconName, i) => {
           const IconComponent = iconName;
@@ -59,12 +59,17 @@ export default function GreetingCard() {
               gap="0.5rem"
               h="100%"
             >
-              <IconComponent />
+              <Flex justifyContent="center" alignItems="center">
+                <IconComponent />
+              </Flex>
               <Text
                 fontSize="0.75rem"
                 fontWeight="medium"
                 h="100%"
                 whiteSpace="normal"
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
               >
                 {t(`greetingCardMenu${i + 1}`)}
               </Text>
