@@ -1,4 +1,4 @@
-# Ansan University Chatbot
+# ansan-univ-chatbot-frontend
 
 - [x] feature0/initialSetup
 
