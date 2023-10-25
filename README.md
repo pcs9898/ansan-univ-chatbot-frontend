@@ -9,8 +9,11 @@
 - [x] feature3/organisms
 - [x] feature4/pages
 
-## Optimization
+## ToDOs
 
 - [ ] microPhoneInput-google STT
 - [ ] darkmode-colorcode, favicon icon change to high resolution
+
+## Optimization
+
 - [ ] usememo, memo, usecallback
