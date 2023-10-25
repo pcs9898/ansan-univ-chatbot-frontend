@@ -18,8 +18,13 @@ export default function GreetingOrFail({
     <Box w="100%">
       <CustomAvatar />
 
-      <Flex ml="2.5rem" gap="0.5rem" flexDir="column">
-        <Flex gap="0.25rem" alignItems="center" w={{ base: "75%", md: "50%" }}>
+      <Flex
+        ml="2.5rem"
+        gap="0.5rem"
+        flexDir="column"
+        w={{ base: "72%", lg: "50%" }}
+      >
+        <Flex gap="0.25rem" alignItems="center">
           <GreetingImage />
 
           {greetingOrFailOption === "greeting" ? (

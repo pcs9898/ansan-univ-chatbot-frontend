@@ -1,6 +1,8 @@
+import { eventNameState } from "@/src/commons/libraries/recoil/recoil";
 import { openPageInNewTab } from "@/src/commons/utils/openPageInNewTab";
 import { Box, Button, Card, Flex, Text } from "@chakra-ui/react";
 import Link from "next/link";
+import { useSetRecoilState } from "recoil";
 
 interface ICustomCardProps {
   customCardProps: {
@@ -15,6 +17,8 @@ interface ICustomCardProps {
 
 export default function CustomCard({ customCardProps }: ICustomCardProps) {
   const { texts, buttons } = customCardProps;
+  const setEventName = useSetRecoilState(eventNameState);
+
   return (
     <Card
       p="0.5rem"
@@ -22,9 +26,8 @@ export default function CustomCard({ customCardProps }: ICustomCardProps) {
       colorScheme="blue"
       gap="0.625rem"
       bgColor="blue.50"
-      //   maxW="16rem"
-      w={{ base: "45%", md: "30%" }}
-      minW={{ base: "16rem", md: "30%" }}
+      w={{ base: "68%", md: "40%", lg: "30%" }}
+      minW={{ base: "68%", md: "40%", lg: "30%" }}
     >
       <Box>
         {texts.map((text, i) => {
@@ -60,7 +63,7 @@ export default function CustomCard({ customCardProps }: ICustomCardProps) {
               bgColor="white"
               color="black"
               w="100%"
-              // postback onclick
+              onClick={() => setEventName(button.postBack)}
             >
               {button.buttonText}
             </Button>

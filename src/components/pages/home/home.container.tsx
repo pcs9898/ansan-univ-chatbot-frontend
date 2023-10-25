@@ -1,10 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { QueryTextMutation } from "./home.quries";
+import { QueryEventMutation, QueryTextMutation } from "./home.quries";
 import { useEffect, useRef, useState } from "react";
 
 import HomePresenter from "../../templates/home/home.presenter";
 import {
+  eventNameState,
   isInputButtonLoading,
   languageCodeState,
   messageTextState,
@@ -27,6 +28,7 @@ interface IChat {
 export default function HomeContainer() {
   const [isLoading, setIsLoading] = useRecoilState(isInputButtonLoading);
   const [messageText, setMessageText] = useRecoilState(messageTextState);
+  const [eventName, setEventName] = useRecoilState(eventNameState);
   const [refreshGreeting, setRefreshGreeting] =
     useRecoilState(refreshGreetingState);
   const languageCode = useRecoilValue(languageCodeState);
@@ -60,6 +62,24 @@ export default function HomeContainer() {
     },
   });
 
+  const queryEventMutation = useMutation({
+    mutationFn: QueryEventMutation,
+    onSuccess(data) {
+      const newMessage = {
+        sender: SENDER_ENUM.bot,
+        message: data.cardList,
+      };
+      addNewMessage(newMessage);
+    },
+    onError(error) {
+      throw new Error(error.message);
+    },
+    onSettled() {
+      setMessageText("");
+      setEventName("");
+    },
+  });
+
   useEffect(() => {
     const newMessage = {
       sender: SENDER_ENUM.bot,
@@ -79,6 +99,18 @@ export default function HomeContainer() {
       queryTextMutation.mutate({ message: messageText, languageCode });
     }
   }, [isLoading]);
+
+  useEffect(() => {
+    if (eventName !== "") {
+      const newMessage = {
+        sender: SENDER_ENUM.user,
+        message: messageText,
+      };
+      addNewMessage(newMessage);
+
+      queryEventMutation.mutate({ postback: eventName, languageCode });
+    }
+  }, [eventName]);
 
   useEffect(() => {
     if (refreshGreeting) {
@@ -110,8 +142,6 @@ export default function HomeContainer() {
     }
   });
 
-  console.log(renderedChatList);
-
   useEffect(() => {
     if (bottomListRef.current) {
       setTimeout(() => {
@@ -121,7 +151,9 @@ export default function HomeContainer() {
   }, [renderedChatList]);
 
   if (queryTextMutation.isPending) {
-    renderedChatList.push(<CustomCards isLoading={true} />);
+    renderedChatList.push(
+      <CustomCards isLoading={true} key={renderedChatList.length} />
+    );
   }
 
   return (

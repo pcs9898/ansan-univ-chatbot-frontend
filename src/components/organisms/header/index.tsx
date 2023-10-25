@@ -21,7 +21,7 @@ import KeyboardAltOutlinedIcon from "@mui/icons-material/KeyboardAltOutlined";
 import { useRecoilState } from "recoil";
 import MicOutlinedIcon from "@mui/icons-material/MicOutlined";
 import {
-  inputMethodEnum,
+  INPUT_METHOD_ENUM,
   inputMethodState,
 } from "@/src/commons/libraries/recoil/recoil";
 
@@ -107,7 +107,7 @@ function Header() {
           as={Button}
           aria-label="inputMethodButton"
           icon={
-            inputMethod === inputMethodEnum.keyboard ? (
+            inputMethod === INPUT_METHOD_ENUM.keyboard ? (
               <MicOutlinedIcon />
             ) : (
               <KeyboardAltOutlinedIcon />
@@ -115,9 +115,9 @@ function Header() {
           }
           onClick={() =>
             setInputMethod((prev) =>
-              prev === inputMethodEnum.keyboard
-                ? inputMethodEnum.microphone
-                : inputMethodEnum.keyboard
+              prev === INPUT_METHOD_ENUM.keyboard
+                ? INPUT_METHOD_ENUM.microphone
+                : INPUT_METHOD_ENUM.keyboard
             )
           }
           color="white"

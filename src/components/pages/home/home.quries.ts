@@ -1,9 +1,14 @@
-import { languageCodeEnum } from "@/src/commons/libraries/recoil/recoil";
+import { LANGUAGE_CODE_ENUM } from "@/src/commons/libraries/recoil/recoil";
 import axios, { AxiosError } from "axios";
 
 export interface IQueryTextMutationProps {
   message: string;
-  languageCode: languageCodeEnum;
+  languageCode: LANGUAGE_CODE_ENUM;
+}
+
+export interface IQueryEventMutationProps {
+  postback: string;
+  languageCode: LANGUAGE_CODE_ENUM;
 }
 
 export async function QueryTextMutation(
@@ -11,10 +16,24 @@ export async function QueryTextMutation(
 ): Promise<any> {
   const { message, languageCode } = data;
 
-  const backEndUri = process.env.NEXT_PUBLIC_BACKEND_URI || "";
+  const backEndUri = process.env.NEXT_PUBLIC_BACKEND_URI + "askByText" || "";
 
   const res = await axios.post(backEndUri, {
     message,
+    languageCode,
+  });
+  return res.data;
+}
+
+export async function QueryEventMutation(
+  data: IQueryEventMutationProps
+): Promise<any> {
+  const { postback, languageCode } = data;
+
+  const backEndUri = process.env.NEXT_PUBLIC_BACKEND_URI + "askByEvent" || "";
+
+  const res = await axios.post(backEndUri, {
+    postback,
     languageCode,
   });
   return res.data;

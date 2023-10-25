@@ -11,4 +11,6 @@
 
 ## Optimization
 
-- [ ]
+- [ ] microPhoneInput
+- [ ] darkmode-colorcode
+- [ ] usememo, memo, usecallback

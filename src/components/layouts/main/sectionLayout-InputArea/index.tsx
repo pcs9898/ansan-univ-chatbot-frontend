@@ -1,12 +1,11 @@
 import {
-  inputMethodEnum,
+  INPUT_METHOD_ENUM,
   inputMethodState,
 } from "@/src/commons/libraries/recoil/recoil";
 import MessageInput from "@/src/components/molecules/messageInput";
 import MicrophoneInput from "@/src/components/molecules/microphoneInput";
-import { Box, Flex } from "@chakra-ui/react";
-import { ReactNode } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { Flex } from "@chakra-ui/react";
+import { useRecoilValue } from "recoil";
 
 export default function SectionLayoutInputArea({}) {
   const inputMethod = useRecoilValue(inputMethodState);
@@ -28,7 +27,7 @@ export default function SectionLayoutInputArea({}) {
       zIndex={1}
       borderRadius={0}
     >
-      {inputMethod === inputMethodEnum.keyboard ? (
+      {inputMethod === INPUT_METHOD_ENUM.keyboard ? (
         <MessageInput />
       ) : (
         <MicrophoneInput />

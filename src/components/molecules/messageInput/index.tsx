@@ -7,6 +7,7 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 import { ChangeEvent } from "react";
 import {
+  eventNameState,
   isInputButtonLoading,
   messageTextState,
   refreshGreetingState,
@@ -16,6 +17,7 @@ export default function MessageInput() {
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useRecoilState(isInputButtonLoading);
   const [messageText, setMessageText] = useRecoilState(messageTextState);
+  const eventName = useRecoilValue(eventNameState);
   const setRefreshGreeting = useSetRecoilState(refreshGreetingState);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +44,7 @@ export default function MessageInput() {
       <Input
         placeholder={t("msgInputText")}
         variant="filled"
-        value={messageText}
+        value={eventName !== "" ? "" : messageText}
         onChange={handleInputChange}
         disabled={isLoading}
         onKeyUp={(e) => {
@@ -57,7 +59,7 @@ export default function MessageInput() {
         aria-label="sendMessageButton"
         icon={<SendOutlinedIcon />}
         colorScheme="blue"
-        isDisabled={messageText === ""}
+        isDisabled={messageText === "" || eventName !== ""}
         isLoading={isLoading}
         onClick={() => onSubmitQueryTextMutation()}
         p="1rem"

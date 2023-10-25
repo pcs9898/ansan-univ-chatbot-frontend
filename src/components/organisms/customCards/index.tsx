@@ -18,7 +18,6 @@ interface ICardsProps {
 }
 
 function CustomCards({ cardsProps, isLoading }: ICardsProps) {
-  // console.log(cardsProps);
   return (
     <Box w="100%">
       <CustomAvatar />
@@ -32,7 +31,7 @@ function CustomCards({ cardsProps, isLoading }: ICardsProps) {
             <Flex
               gap="0.5rem"
               mt="0.5rem"
-              overflow="scroll"
+              overflowX="scroll"
               sx={{
                 "@media (max-width: 32.3125rem)": {
                   "::-webkit-scrollbar": {
