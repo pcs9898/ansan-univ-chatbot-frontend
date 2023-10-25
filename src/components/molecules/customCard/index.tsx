@@ -1,4 +1,4 @@
-import { openPageInNewTab } from "@/commons/utils/openPageInNewTab";
+import { openPageInNewTab } from "@/src/commons/utils/openPageInNewTab";
 import { Box, Button, Card, Flex, Text } from "@chakra-ui/react";
 import Link from "next/link";
 

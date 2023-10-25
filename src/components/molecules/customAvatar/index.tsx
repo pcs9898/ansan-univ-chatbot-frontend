@@ -1,7 +1,8 @@
 import { Avatar, Flex, Text } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
+import { memo } from "react";
 
-export default function CustomAvatar({}) {
+function CustomAvatar({}) {
   const { t } = useTranslation();
 
   return (
@@ -13,3 +14,5 @@ export default function CustomAvatar({}) {
     </Flex>
   );
 }
+
+export default memo(CustomAvatar);

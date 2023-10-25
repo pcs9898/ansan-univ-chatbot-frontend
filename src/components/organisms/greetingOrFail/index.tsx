@@ -1,10 +1,11 @@
-import CustomAvatar from "@/components/molecules/customAvatar";
-import FailMessage from "@/components/molecules/failMessage";
-import FormatTime from "@/components/molecules/formatTime";
-import GreetingCard from "@/components/molecules/greetingCard";
-import GreetingImage from "@/components/molecules/greetingImage";
-import GreetingMessage from "@/components/molecules/greetingMessage";
 import { Box, Flex } from "@chakra-ui/react";
+import CustomAvatar from "../../molecules/customAvatar";
+import GreetingImage from "../../molecules/greetingImage";
+import GreetingMessage from "../../molecules/greetingMessage";
+import FailMessage from "../../molecules/failMessage";
+import GreetingCard from "../../molecules/greetingCard";
+import FormatTime from "../../molecules/formatTime";
+import { useRecoilValue, useRecoilValueLoadable } from "recoil";
 
 interface IGreetingOrFailProps {
   greetingOrFailOption: "greeting" | "fail";
@@ -14,7 +15,7 @@ export default function GreetingOrFail({
   greetingOrFailOption,
 }: IGreetingOrFailProps) {
   return (
-    <Box>
+    <Box w="100%">
       <CustomAvatar />
 
       <Flex ml="2.5rem" gap="0.5rem" flexDir="column">

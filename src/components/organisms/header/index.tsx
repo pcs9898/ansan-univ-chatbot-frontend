@@ -17,15 +17,15 @@ import { useTranslation } from "next-i18next";
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 import { useEffect, useState } from "react";
 import KeyboardAltOutlinedIcon from "@mui/icons-material/KeyboardAltOutlined";
-import { inputMethodState } from "@/commons/libraries/recoil/recoil";
+
 import { useRecoilState } from "recoil";
 import MicOutlinedIcon from "@mui/icons-material/MicOutlined";
+import {
+  inputMethodEnum,
+  inputMethodState,
+} from "@/src/commons/libraries/recoil/recoil";
 
-interface ILocaleObject {
-  [key: string]: string[];
-}
-
-const localeObg: ILocaleObject = {
+const localeObg = {
   en: ["🇺🇸 English", "🇰🇷 Korean"],
   ko: ["🇰🇷 한국어", "🇺🇸 영어"],
 };
@@ -33,18 +33,15 @@ const localeObg: ILocaleObject = {
 function Header() {
   const router = useRouter();
   const { t } = useTranslation();
-  const [currentLocale, setCurrentLocale] = useState("");
+
   const [inputMethod, setInputMethod] = useRecoilState(inputMethodState);
   const { colorMode, toggleColorMode } = useColorMode();
 
-  useEffect(() => {
-    const currentLocaleFromCookies: string = Cookies.get("locale") ?? "";
-    setCurrentLocale(currentLocaleFromCookies);
-  }, []);
+  const currentLocale = router.locale;
 
   const changeLocale = (locale: string) => {
     Cookies.set("locale", locale);
-    setCurrentLocale(locale);
+
     router.push(router.pathname, router.asPath, { locale });
   };
 
@@ -52,10 +49,12 @@ function Header() {
     <Flex
       bgColor="blue.500"
       borderRadius="0px"
-      h={{ base: "3.5rem", md: "5rem" }}
+      // h={{ base: "3.5rem", md: "5rem" }}
+      h="3.5rem"
       alignItems="center"
       justifyContent="space-between"
-      px="0.5em"
+      pl="0.25rem"
+      pr="0.125rem"
     >
       <Menu matchWidth={true}>
         {({ isOpen }) => (
@@ -69,12 +68,12 @@ function Header() {
               rightIcon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
               px="0.5rem"
             >
-              {localeObg[currentLocale]?.[0]}
+              {localeObg[currentLocale][0]}
             </MenuButton>
             <MenuList maxW="150px">
               <MenuOptionGroup defaultValue={currentLocale} type="radio">
                 <MenuItemOption value={currentLocale} fontWeight="semibold">
-                  {localeObg[currentLocale]?.[0]}
+                  {localeObg[currentLocale][0]}
                 </MenuItemOption>
                 <MenuItemOption
                   value={currentLocale === "en" ? "ko" : "en"}
@@ -83,7 +82,7 @@ function Header() {
                   }
                   fontWeight="semibold"
                 >
-                  {localeObg[currentLocale]?.[1]}
+                  {localeObg[currentLocale][1]}
                 </MenuItemOption>
               </MenuOptionGroup>
             </MenuList>
@@ -108,7 +107,7 @@ function Header() {
           as={Button}
           aria-label="inputMethodButton"
           icon={
-            inputMethod === "keyboard" ? (
+            inputMethod === inputMethodEnum.keyboard ? (
               <MicOutlinedIcon />
             ) : (
               <KeyboardAltOutlinedIcon />
@@ -116,7 +115,9 @@ function Header() {
           }
           onClick={() =>
             setInputMethod((prev) =>
-              prev === "keyboard" ? "microphone" : "keyboard"
+              prev === inputMethodEnum.keyboard
+                ? inputMethodEnum.microphone
+                : inputMethodEnum.keyboard
             )
           }
           color="white"
