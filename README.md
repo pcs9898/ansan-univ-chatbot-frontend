@@ -12,5 +12,5 @@
 ## Optimization
 
 - [ ] microPhoneInput
-- [ ] darkmode-colorcode
+- [ ] darkmode-colorcode, favicon icon change to high resolution
 - [ ] usememo, memo, usecallback
