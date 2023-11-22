@@ -9,7 +9,7 @@ interface ILayoutsProps {
 
 export default function Layouts({ children }: ILayoutsProps) {
   return (
-    <>
+    <Box w="100vw" h="100dvh">
       <Box
         position="fixed"
         top={0}
@@ -23,6 +23,6 @@ export default function Layouts({ children }: ILayoutsProps) {
       </Box>
 
       <MainLayout>{children}</MainLayout>
-    </>
+    </Box>
   );
 }
