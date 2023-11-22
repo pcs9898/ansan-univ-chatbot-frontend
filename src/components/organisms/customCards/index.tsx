@@ -44,7 +44,6 @@ function CustomCards({ cardsProps, isLoading }: ICardsProps) {
                   scrollSnapType: "x mandatory",
                 }}
                 borderRadius="0px"
-                zIndex={2}
                 w="100%"
               >
                 {cardsProps.slice(1).map((cardProps, index) => (

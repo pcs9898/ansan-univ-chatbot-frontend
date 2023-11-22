@@ -272,7 +272,6 @@ function Header() {
                     transform: "translateX(100%)",
                     width: "20px",
                   }}
-                  zIndex={5}
                 >
                   <MenuOptionGroup
                     defaultValue={currentLocale}

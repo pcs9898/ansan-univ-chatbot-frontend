@@ -8,6 +8,7 @@ export const globalStyles = {
     },
     body: {
       overflow: "hidden",
+      height: "100dvh",
     },
   },
 };
