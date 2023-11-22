@@ -1,11 +1,13 @@
 import { useMutation } from "@tanstack/react-query";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { QueryEventMutation, QueryTextMutation } from "./home.quries";
 import { useEffect, useRef, useState } from "react";
 
 import HomePresenter from "../../templates/home/home.presenter";
 import {
+  LANGUAGE_CODE_ENUM,
   eventNameState,
+  inputMethodState,
   isInputButtonLoading,
   languageCodeState,
   messageTextState,
@@ -14,6 +16,7 @@ import {
 import MyMessageWithFormat from "../../organisms/myMessageWithFormat";
 import GreetingOrFail from "../../organisms/greetingOrFail";
 import CustomCards from "../../organisms/customCards";
+import { useRouter } from "next/router";
 
 enum SENDER_ENUM {
   bot = "bot",
@@ -31,9 +34,12 @@ export default function HomeContainer() {
   const [eventName, setEventName] = useRecoilState(eventNameState);
   const [refreshGreeting, setRefreshGreeting] =
     useRecoilState(refreshGreetingState);
-  const languageCode = useRecoilValue(languageCodeState);
   const [chatList, setChatList] = useState([] as any);
   const bottomListRef = useRef(null);
+  const router = useRouter();
+  const [languageCode, setLanguageCode] = useRecoilState(languageCodeState);
+  const firstRender = useRef(true);
+  const inputMethod = useRecoilValue(inputMethodState);
 
   const queryTextMutation = useMutation({
     mutationFn: QueryTextMutation,
@@ -43,6 +49,13 @@ export default function HomeContainer() {
           sender: SENDER_ENUM.bot,
           message: "fail",
         };
+        addNewMessage(newMessage);
+      } else if (data === "greeting") {
+        const newMessage = {
+          sender: SENDER_ENUM.bot,
+          message: "greeting",
+        };
+
         addNewMessage(newMessage);
       } else {
         const newMessage = {
@@ -81,6 +94,11 @@ export default function HomeContainer() {
   });
 
   useEffect(() => {
+    if (router.locale === "en") {
+      setLanguageCode(LANGUAGE_CODE_ENUM.en);
+    } else {
+      setLanguageCode(LANGUAGE_CODE_ENUM.ko);
+    }
     const newMessage = {
       sender: SENDER_ENUM.bot,
       message: "greeting",
@@ -124,6 +142,28 @@ export default function HomeContainer() {
     }
   }, [refreshGreeting]);
 
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    setChatList([]);
+
+    const newMessage = {
+      sender: SENDER_ENUM.bot,
+      message: "greeting",
+    };
+    addNewMessage(newMessage);
+  }, [languageCode]);
+
+  useEffect(() => {
+    if (bottomListRef.current) {
+      setTimeout(() => {
+        bottomListRef.current.scrollTop = bottomListRef.current.scrollHeight;
+      }, 5);
+    }
+  }, [inputMethod]);
+
   const addNewMessage = (newMessage) => {
     setChatList((prevList) => [...prevList, newMessage]);
   };
@@ -150,7 +190,7 @@ export default function HomeContainer() {
     }
   }, [renderedChatList]);
 
-  if (queryTextMutation.isPending) {
+  if (queryTextMutation.isPending || queryEventMutation.isPending) {
     renderedChatList.push(
       <CustomCards isLoading={true} key={renderedChatList.length} />
     );

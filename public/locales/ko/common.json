@@ -1,10 +1,11 @@
 {
-  "headTitle": "안산대학교 안이",
-  "headerChatbotName": "안이(An-e)",
-  "customAvatarName": "안이(An-e)",
+  "headTitle": "안산대학교 챗봇",
+  "headerChatbotName": "안산대학교 챗봇",
+  "headerSubText": "학교 홈페이지 방문",
+  "customAvatarName": "안산대학교",
   "formatTimeMorning": "오전",
   "formatTimeAfternoon": "오후",
-  "greetingMsg1": "안녕하세요, 안산대학교 챗봇 안이(An-e)예요😊",
+  "greetingMsg1": "안녕하세요, 안산대학교 챗봇이에요 😊",
   "greetingMsg2": "학사안내, 학생지원, IT/기술지원 등 학교생활에서 궁금한 점을 질문해주시면 안내해드릴게요!",
   "greetingCardMenu1": "학사일정",
   "greetingCardMenu2": "셔틀버스",
@@ -12,7 +13,7 @@
   "greetingCardMenu4": "식단",
   "greetingCardMenu5": "장학일정",
   "greetingCardMenu6": "교내연락처",
-  "greetingCardMenu7": "도서관이용",
+  "greetingCardMenu7": "도서관",
   "greetingCardMenu8": "등록금",
   "greetingCardMenu9": "수강신청",
   "customCardText1": "학사일정이 궁금하신가요?📆",
@@ -23,5 +24,10 @@
   "customCardButton2": "학사일정 보러가기(리스트형)",
   "msgInputText": "질문을 입력하세요",
   "failMessage1": "잘 이해하지 못했어요 😥",
-  "failMessage2": "학사안내, 학생지원, IT/기술지원 등에 대해 간단한 문장 또는 키워드로 질문해주시면 제가 더 잘 이해할 수 있어요!"
+  "failMessage2": "학사안내, 학생지원, IT/기술지원 등에 대해 간단한 문장 또는 키워드로 질문해주시면 제가 더 잘 이해할 수 있어요!",
+  "settingsHeader": "설정",
+  "settingsDarkMode": "다크모드",
+  "settingsLanguage": "언어",
+  "settingsLanguageBtn1": "한국어",
+  "settingsLanguageBtn2": "영어"
 }

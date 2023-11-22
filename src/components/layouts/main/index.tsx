@@ -13,11 +13,10 @@ export default function MainLayout({ children }: IMainLayoutProps) {
       as="main"
       p={0}
       m={0}
-      mt="3.5rem"
-      mb="3.5rem"
+      mt="5rem"
+      mb="4rem"
       width="100%"
-      height="calc(100vh - 7rem)"
-      borderRadius={0}
+      borderRadius="0px"
     >
       <SectionLayoutChatArea>{children}</SectionLayoutChatArea>
       <SectionLayoutInputArea />

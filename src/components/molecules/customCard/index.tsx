@@ -1,8 +1,12 @@
-import { eventNameState } from "@/src/commons/libraries/recoil/recoil";
+import {
+  LANGUAGE_CODE_ENUM,
+  eventNameState,
+  languageCodeState,
+  messageTextState,
+} from "@/src/commons/libraries/recoil/recoil";
 import { openPageInNewTab } from "@/src/commons/utils/openPageInNewTab";
-import { Box, Button, Card, Flex, Text } from "@chakra-ui/react";
-import Link from "next/link";
-import { useSetRecoilState } from "recoil";
+import { Box, Button, Card, Flex, Text, useColorMode } from "@chakra-ui/react";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 interface ICustomCardProps {
   customCardProps: {
@@ -15,61 +19,88 @@ interface ICustomCardProps {
   };
 }
 
+interface IHandleOnClick {
+  postback: string;
+  buttonText: string;
+}
+
 export default function CustomCard({ customCardProps }: ICustomCardProps) {
   const { texts, buttons } = customCardProps;
   const setEventName = useSetRecoilState(eventNameState);
+  const setMessageText = useSetRecoilState(messageTextState);
+  const { colorMode, toggleColorMode } = useColorMode();
+  const [languageCode, setLanguageCode] = useRecoilState(languageCodeState);
+
+  const handleOnClick = ({ postback, buttonText }: IHandleOnClick) => {
+    setMessageText(buttonText);
+    setEventName(postback);
+  };
 
   return (
     <Card
-      p="0.5rem"
+      py="0.625rem"
+      px="0.75rem"
       variant="unstyled"
-      colorScheme="blue"
       gap="0.625rem"
-      bgColor="blue.50"
-      w={{ base: "68%", md: "40%", lg: "30%" }}
-      minW={{ base: "68%", md: "40%", lg: "30%" }}
+      bgColor={colorMode === "light" ? "cardBgColorLight" : "cardBgColorDark"}
+      maxW={{ base: "85%", sm: "21.25rem" }}
+      w={{ base: "85%", sm: "21.25rem" }}
+      minW={{ base: "85%", sm: "21.25rem" }}
+      sx={{ scrollSnapAlign: "start" }}
     >
-      <Box>
+      <Box whiteSpace="normal">
         {texts.map((text, i) => {
-          if (!text) {
-            return <Text key={i}>&nbsp;</Text>;
+          if (text === " ") {
+            return (
+              <Text key={i} whiteSpace="normal">
+                &nbsp;
+              </Text>
+            );
           }
           return (
-            <Text key={i} fontSize="0.875rem" fontWeight="medium">
+            <Text
+              key={i}
+              fontSize="1rem"
+              fontWeight="medium"
+              style={{ wordBreak: "break-word", overflowWrap: "break-word" }}
+            >
               {text}
             </Text>
           );
         })}
       </Box>
-      <Flex w="100%" gap="0.375rem" flexDir="column">
-        {buttons?.map((button, i) => {
-          return button.link ? (
-            <Button
-              key={i}
-              fontSize="0.875rem"
-              fontWeight="semibold"
-              bgColor="white"
-              color="black"
-              w="100%"
-              onClick={() => button.link && openPageInNewTab(button.link)}
-            >
-              {button.buttonText}
-            </Button>
-          ) : (
-            <Button
-              key={i}
-              fontSize="0.875rem"
-              fontWeight="semibold"
-              bgColor="white"
-              color="black"
-              w="100%"
-              onClick={() => setEventName(button.postBack)}
-            >
-              {button.buttonText}
-            </Button>
-          );
-        })}
-      </Flex>
+      {buttons.length >= 1 && (
+        <Flex w="100%" gap="0.375rem" flexDir="column">
+          {buttons?.map((button, i) => {
+            return button.link ? (
+              <Button
+                key={i}
+                fontSize="1rem"
+                bgColor="white"
+                color="mainColorLight"
+                onClick={() => button.link && openPageInNewTab(button.link)}
+              >
+                <Text whiteSpace="normal">{button.buttonText}</Text>
+              </Button>
+            ) : (
+              <Button
+                key={i}
+                fontSize="1rem"
+                bgColor="white"
+                color="mainColorLight"
+                onClick={() =>
+                  handleOnClick({
+                    postback: button.postBack,
+                    buttonText: button.buttonText,
+                  })
+                }
+              >
+                <Text whiteSpace="normal">{button.buttonText}</Text>
+              </Button>
+            );
+          })}
+        </Flex>
+      )}
     </Card>
   );
 }

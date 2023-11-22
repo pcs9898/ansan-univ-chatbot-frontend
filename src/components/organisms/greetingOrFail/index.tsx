@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, Image } from "@chakra-ui/react";
 import CustomAvatar from "../../molecules/customAvatar";
 import GreetingImage from "../../molecules/greetingImage";
 import GreetingMessage from "../../molecules/greetingMessage";
@@ -15,30 +15,21 @@ export default function GreetingOrFail({
   greetingOrFailOption,
 }: IGreetingOrFailProps) {
   return (
-    <Box w="100%">
+    <Flex gap="0.5rem" w="100%">
       <CustomAvatar />
 
-      <Flex
-        ml="2.5rem"
-        gap="0.5rem"
-        flexDir="column"
-        w={{ base: "72%", lg: "50%" }}
-      >
-        <Flex gap="0.25rem" alignItems="center">
-          <GreetingImage />
+      <Flex gap="0.5rem" flexDir="column" w="100%">
+        {greetingOrFailOption === "greeting" ? (
+          <GreetingMessage />
+        ) : (
+          <FailMessage />
+        )}
 
-          {greetingOrFailOption === "greeting" ? (
-            <GreetingMessage />
-          ) : (
-            <FailMessage />
-          )}
-        </Flex>
-
-        <Flex flexDir="column" gap="0.25rem">
+        <Flex flexDir="column" w="100%">
           <GreetingCard />
           <FormatTime />
         </Flex>
       </Flex>
-    </Box>
+    </Flex>
   );
 }

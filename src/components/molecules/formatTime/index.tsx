@@ -19,5 +19,14 @@ export default function FormatTime() {
     );
   }, []);
 
-  return <Text fontSize="0.75rem">{timeString}</Text>;
+  return (
+    <Text
+      fontSize="0.8rem"
+      color="formatTimeColor"
+      mt="0.125rem"
+      fontWeight="medium"
+    >
+      {timeString}
+    </Text>
+  );
 }

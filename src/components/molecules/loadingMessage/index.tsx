@@ -1,5 +1,5 @@
 import { Card } from "@chakra-ui/react";
-import SyncLoader from "react-spinners/SyncLoader";
+import { PulseLoader } from "react-spinners";
 
 export default function LoadingMessage() {
   return (
@@ -8,10 +8,11 @@ export default function LoadingMessage() {
       variant="unstyled"
       colorScheme="blue"
       gap="0.625rem"
-      bgColor="blue.50"
       w="max-content"
+      display="flex"
+      alignItems="center"
     >
-      <SyncLoader size={12} speedMultiplier={0.8} />
+      <PulseLoader size={8} speedMultiplier={0.8} color="#9A9A9A" />
     </Card>
   );
 }

@@ -7,14 +7,15 @@ interface IMyMessageProps {
 export default function MyMessage({ text }: IMyMessageProps) {
   return (
     <Card
-      p="0.5rem"
+      py="0.625rem"
+      px="0.75rem"
       variant="unstyled"
       colorScheme="blue"
-      bgColor="blue.300"
-      //   maxW="16rem"
+      bgColor="myMessageColorLight"
       w="max-content"
+      color="white"
     >
-      <Text fontWeight="normal" fontSize="0.875rem">
+      <Text fontWeight="medium" fontSize="1rem">
         {text}
       </Text>
     </Card>

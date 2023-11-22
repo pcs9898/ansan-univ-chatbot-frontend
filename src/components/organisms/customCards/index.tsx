@@ -19,41 +19,45 @@ interface ICardsProps {
 
 function CustomCards({ cardsProps, isLoading }: ICardsProps) {
   return (
-    <Box w="100%">
+    <Flex gap="0.5rem" w="100%" borderRadius="0px">
       <CustomAvatar />
 
-      <Box ml="2.5rem">
+      <Flex flexDir="column" w="90%">
         {isLoading ? (
           <LoadingMessage />
         ) : (
           <>
             <CustomCard customCardProps={cardsProps[0]} />
-            <Flex
-              gap="0.5rem"
-              mt="0.5rem"
-              overflowX="scroll"
-              sx={{
-                "@media (max-width: 32.3125rem)": {
-                  "::-webkit-scrollbar": {
-                    display: "none",
+
+            {cardsProps.length > 1 && (
+              <Flex
+                gap="0.5rem"
+                mt="0.5rem"
+                overflowX="scroll"
+                sx={{
+                  "@media (max-width: 32.3125rem)": {
+                    "::-webkit-scrollbar": {
+                      display: "none",
+                    },
+                    "::-webkit-scrollbar-thumb": {},
+                    // 스크롤 스냅 타입 설정
                   },
-                  "::-webkit-scrollbar-thumb": {},
-                },
-              }}
-            >
-              {cardsProps.length > 1 &&
-                cardsProps
-                  .slice(1)
-                  .map((cardProps, index) => (
-                    <CustomCard key={index + 1} customCardProps={cardProps} />
-                  ))}
-            </Flex>
+                  scrollSnapType: "x mandatory",
+                }}
+                borderRadius="0px"
+                zIndex={2}
+              >
+                {cardsProps.slice(1).map((cardProps, index) => (
+                  <CustomCard key={index + 111} customCardProps={cardProps} />
+                ))}
+              </Flex>
+            )}
 
             <FormatTime />
           </>
         )}
-      </Box>
-    </Box>
+      </Flex>
+    </Flex>
   );
 }
 

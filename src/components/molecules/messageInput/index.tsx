@@ -1,11 +1,21 @@
-import { Button, HStack, IconButton, Input } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  HStack,
+  IconButton,
+  Image,
+  Input,
+  InputGroup,
+  InputRightElement,
+  useColorMode,
+} from "@chakra-ui/react";
 import RefreshOutlinedIcon from "@mui/icons-material/RefreshOutlined";
 import { useTranslation } from "next-i18next";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import BeatLoader from "react-spinners/BeatLoader";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import {
   eventNameState,
   isInputButtonLoading,
@@ -19,52 +29,71 @@ export default function MessageInput() {
   const [messageText, setMessageText] = useRecoilState(messageTextState);
   const eventName = useRecoilValue(eventNameState);
   const setRefreshGreeting = useSetRecoilState(refreshGreetingState);
+  const [text, setText] = useState("");
+  const { colorMode, toggleColorMode } = useColorMode();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setMessageText(e.target.value);
+    setText(e.target.value);
   };
 
   const onSubmitQueryTextMutation = () => {
-    if (messageText !== "") {
+    if (text !== "") {
+      setText("");
+      setMessageText(text);
       setIsLoading(true);
     }
   };
 
   return (
-    <HStack gap={0} h="100%" w="100%">
+    <Flex gap={0} h="100%" w="100%" alignItems="center" px="0.625rem">
       <IconButton
         aria-label="refreshButton"
         icon={<RefreshOutlinedIcon />}
         variant="ghost"
         disabled={isLoading}
         onClick={() => setRefreshGreeting(true)}
-        // onclick refresh implement
+        pl="0px"
       />
 
-      <Input
-        placeholder={t("msgInputText")}
-        variant="filled"
-        value={eventName !== "" ? "" : messageText}
-        onChange={handleInputChange}
-        disabled={isLoading}
-        onKeyUp={(e) => {
-          if (e.key === "Enter" && messageText !== "") {
-            onSubmitQueryTextMutation();
-          }
-        }}
-        mr="0.625rem"
-      />
-
-      <IconButton
-        aria-label="sendMessageButton"
-        icon={<SendOutlinedIcon />}
-        colorScheme="blue"
-        isDisabled={messageText === "" || eventName !== ""}
-        isLoading={isLoading}
-        onClick={() => onSubmitQueryTextMutation()}
-        p="1rem"
-        spinner={<BeatLoader size={8} />}
-      />
-    </HStack>
+      <InputGroup display="flex" alignItems="center">
+        <Input
+          placeholder={t("msgInputText")}
+          fontWeight="medium"
+          variant="unstyled"
+          value={text}
+          onChange={handleInputChange}
+          disabled={isLoading}
+          onKeyUp={(e) => {
+            if (e.key === "Enter" && text !== "") {
+              onSubmitQueryTextMutation();
+            }
+          }}
+          bgColor={colorMode === "light" ? "cardBgColorLight" : "gray.700"}
+          borderRadius="1.125rem"
+          h="3rem"
+          px="0.875rem"
+        />
+        {text && (
+          <InputRightElement h="3rem" display="flex" alignItems="center">
+            <Button
+              h="2.5rem"
+              p="0px"
+              bgColor="#D2D7F4"
+              borderRadius="1rem"
+              onClick={() => onSubmitQueryTextMutation()}
+              mr="0.875rem"
+            >
+              <Image
+                alt="send button"
+                src="/inputSendIcon.svg"
+                w="1.5rem"
+                h="1.5rem"
+                style={{ fill: "#3857E3" }}
+              />
+            </Button>
+          </InputRightElement>
+        )}
+      </InputGroup>
+    </Flex>
   );
 }

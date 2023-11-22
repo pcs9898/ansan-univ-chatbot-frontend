@@ -12,7 +12,7 @@ export default function MyMessageWithFormat({
   text,
 }: IMyMessageWithFormatProps) {
   return (
-    <Flex alignItems="flex-end" flexDir="column" gap="0.25rem" w="100%">
+    <Flex alignItems="flex-end" flexDir="column" w="100%">
       <MyMessage text={text} />
       <FormatTime />
     </Flex>

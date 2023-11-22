@@ -4,7 +4,7 @@ export const globalStyles = {
       boxSizing: "border-box",
       margin: 0,
       padding: 0,
-      borderRadius: "12px",
+      borderRadius: "16px",
     },
     body: {
       overflow: "hidden",

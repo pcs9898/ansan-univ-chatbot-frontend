@@ -17,6 +17,7 @@ export default function Layouts({ children }: ILayoutsProps) {
         w="100%"
         zIndex="1"
         borderRadius={0}
+        px="1rem"
       >
         <Header />
       </Box>

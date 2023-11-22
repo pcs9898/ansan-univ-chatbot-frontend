@@ -1,10 +1,11 @@
 {
-  "headTitle": "Ansan University An-e",
-  "headerChatbotName": "An-e",
-  "customAvatarName": "An-e",
+  "headTitle": "Ansan University Chatbot",
+  "headerChatbotName": "Ansan Univ Chatbot",
+  "headerSubText": "Visit School Website",
+  "customAvatarName": "Ansan Univ Chatbot",
   "formatTimeMorning": "AM",
   "formatTimeAfternoon": "PM",
-  "greetingMsg1": "Hello, I'm Ansan University's chatbot, An-e😊",
+  "greetingMsg1": "Hello, I'm Ansan University's Chatbot 😊",
   "greetingMsg2": "Ask me anything about academic guidance, student support, IT/technical support and other school life matters!",
   "greetingCardMenu1": "Academic Calendar",
   "greetingCardMenu2": "Shuttle Bus",
@@ -23,5 +24,10 @@
   "customCardButton2": "Go to Academic Calendar (List View)",
   "msgInputText": "How can i help you?",
   "failMessage1": "I didn't understand it well 😥",
-  "failMessage2": "If you ask me a simple sentence or keyword about academic information, student support, IT/technical support, I can understand better!"
+  "failMessage2": "If you ask me a simple sentence or keyword about academic information, student support, IT/technical support, I can understand better!",
+  "settingsHeader": "Settings",
+  "settingsDarkMode": "Dark Mode",
+  "settingsLanguage": "Language",
+  "settingsLanguageBtn1": "KOR",
+  "settingsLanguageBtn2": "ENG"
 }

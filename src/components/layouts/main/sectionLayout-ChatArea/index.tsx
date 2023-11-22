@@ -9,7 +9,13 @@ export default function SectionLayoutChatArea({
   children,
 }: ISectionLayoutChatAreaProps) {
   return (
-    <Box as="section" id="chat-area" overflowY="auto">
+    <Box
+      as="section"
+      id="chat-area"
+      overflowY="auto"
+      borderRadius="0px"
+      overflowX="hidden"
+    >
       {children}
     </Box>
   );

@@ -9,6 +9,7 @@ import { useRecoilValue } from "recoil";
 
 export default function SectionLayoutInputArea({}) {
   const inputMethod = useRecoilValue(inputMethodState);
+
   return (
     <Flex
       as="section"
@@ -16,16 +17,13 @@ export default function SectionLayoutInputArea({}) {
       p={0}
       m={0}
       width="100%"
-      // h={{ base: "3.5rem", md: "5rem" }}
-      h="3.5rem"
-      pl="0.125rem"
-      pr="0.625rem"
+      h={inputMethod === INPUT_METHOD_ENUM.keyboard ? "4rem" : "8rem"}
       position="fixed"
       bottom={0}
       left={0}
-      bg="white"
       zIndex={1}
       borderRadius={0}
+      justifyContent="center"
     >
       {inputMethod === INPUT_METHOD_ENUM.keyboard ? (
         <MessageInput />

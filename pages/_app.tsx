@@ -5,7 +5,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
-import { RecoilRoot } from "recoil";
+import { RecoilRoot, useSetRecoilState } from "recoil";
 import nextI18NextConfig from "../next-i18next.config.js";
 import { customTheme } from "@/src/commons/theme/customTheme.theme";
 import { queryClient } from "@/src/commons/libraries/react-query/react-query";
@@ -18,7 +18,6 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   useEffect(() => {
     const preferredLocale = Cookies.get("locale");
-
     if (preferredLocale) {
       router.push(router.pathname, router.asPath, {
         locale: preferredLocale,
