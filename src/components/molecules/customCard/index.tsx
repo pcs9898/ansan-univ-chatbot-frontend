@@ -43,9 +43,9 @@ export default function CustomCard({ customCardProps }: ICustomCardProps) {
       variant="unstyled"
       gap="0.625rem"
       bgColor={colorMode === "light" ? "cardBgColorLight" : "cardBgColorDark"}
-      maxW={{ base: "85%", sm: "21.25rem" }}
-      w={{ base: "85%", sm: "21.25rem" }}
       minW={{ base: "85%", sm: "21.25rem" }}
+      w={{ base: "85%", sm: "21.25rem" }}
+      maxW={{ base: "85%", sm: "21.25rem" }}
       sx={{ scrollSnapAlign: "start" }}
     >
       <Box whiteSpace="normal">

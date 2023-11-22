@@ -11,8 +11,8 @@
 
 ## ToDOs
 
-- [ ] microPhoneInput-google STT
-- [ ] darkmode-colorcode, favicon icon change to high resolution
+- [x] microPhoneInput-google STT
+- [x] darkmode-colorcode, favicon icon change to high resolution
 
 ## Optimization
 

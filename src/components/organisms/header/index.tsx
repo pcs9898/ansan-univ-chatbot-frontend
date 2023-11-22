@@ -1,3 +1,4 @@
+import "regenerator-runtime/runtime";
 import {
   Button,
   Drawer,
@@ -42,6 +43,7 @@ import {
 import CustomAvatar from "../../molecules/customAvatar";
 import ReactCountryFlag from "react-country-flag";
 import Link from "next/link";
+import { useSpeechRecognition } from "react-speech-recognition";
 
 const localeObg = {
   en: [
@@ -93,6 +95,8 @@ function Header() {
   const [inputMethod, setInputMethod] = useRecoilState(inputMethodState);
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { browserSupportsSpeechRecognition } = useSpeechRecognition();
+  const [supportMic, setSupportMic] = useState(true);
 
   const currentLocale = router.locale;
 
@@ -105,6 +109,12 @@ function Header() {
     }
     router.push(router.pathname, router.asPath, { locale });
   };
+
+  useEffect(() => {
+    if (!browserSupportsSpeechRecognition) {
+      setSupportMic(false);
+    }
+  }, []);
 
   return (
     <Flex
@@ -136,27 +146,29 @@ function Header() {
       </Flex>
 
       <Flex>
-        <IconButton
-          as={Button}
-          aria-label="inputMethodButton"
-          icon={
-            inputMethod === INPUT_METHOD_ENUM.keyboard ? (
-              <MicIcon />
-            ) : (
-              <KeyboardIcon />
-            )
-          }
-          onClick={() =>
-            setInputMethod((prev) =>
-              prev === INPUT_METHOD_ENUM.keyboard
-                ? INPUT_METHOD_ENUM.microphone
-                : INPUT_METHOD_ENUM.keyboard
-            )
-          }
-          variant="unstyled"
-          display="flex"
-          justifyContent="center"
-        />
+        {supportMic && (
+          <IconButton
+            as={Button}
+            aria-label="inputMethodButton"
+            icon={
+              inputMethod === INPUT_METHOD_ENUM.keyboard ? (
+                <MicIcon />
+              ) : (
+                <KeyboardIcon />
+              )
+            }
+            onClick={() =>
+              setInputMethod((prev) =>
+                prev === INPUT_METHOD_ENUM.keyboard
+                  ? INPUT_METHOD_ENUM.microphone
+                  : INPUT_METHOD_ENUM.keyboard
+              )
+            }
+            variant="unstyled"
+            display="flex"
+            justifyContent="center"
+          />
+        )}
 
         <Show below="sm">
           <IconButton
@@ -260,6 +272,7 @@ function Header() {
                     transform: "translateX(100%)",
                     width: "20px",
                   }}
+                  zIndex={5}
                 >
                   <MenuOptionGroup
                     defaultValue={currentLocale}

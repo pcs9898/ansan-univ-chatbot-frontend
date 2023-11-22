@@ -30,7 +30,7 @@ export default function HomePresenter({
       height={
         inputMethod === INPUT_METHOD_ENUM.keyboard
           ? "calc(100vh - 9rem)"
-          : "calc(100vh - 13rem)"
+          : "calc(100vh - 10.5rem)"
       }
       overflowY="auto"
       borderRadius="0px"

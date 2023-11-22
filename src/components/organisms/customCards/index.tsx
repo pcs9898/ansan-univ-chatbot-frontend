@@ -22,7 +22,7 @@ function CustomCards({ cardsProps, isLoading }: ICardsProps) {
     <Flex gap="0.5rem" w="100%" borderRadius="0px">
       <CustomAvatar />
 
-      <Flex flexDir="column" w="90%">
+      <Flex flexDir="column" w="98%" overflowX="hidden">
         {isLoading ? (
           <LoadingMessage />
         ) : (
@@ -33,19 +33,19 @@ function CustomCards({ cardsProps, isLoading }: ICardsProps) {
               <Flex
                 gap="0.5rem"
                 mt="0.5rem"
-                overflowX="scroll"
+                overflowX="auto"
                 sx={{
                   "@media (max-width: 32.3125rem)": {
                     "::-webkit-scrollbar": {
                       display: "none",
                     },
                     "::-webkit-scrollbar-thumb": {},
-                    // 스크롤 스냅 타입 설정
                   },
                   scrollSnapType: "x mandatory",
                 }}
                 borderRadius="0px"
                 zIndex={2}
+                w="100%"
               >
                 {cardsProps.slice(1).map((cardProps, index) => (
                   <CustomCard key={index + 111} customCardProps={cardProps} />

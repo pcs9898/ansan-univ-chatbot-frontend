@@ -45,55 +45,44 @@ export default function MessageInput() {
   };
 
   return (
-    <Flex gap={0} h="100%" w="100%" alignItems="center" px="0.625rem">
-      <IconButton
-        aria-label="refreshButton"
-        icon={<RefreshOutlinedIcon />}
-        variant="ghost"
+    <InputGroup display="flex" alignItems="center">
+      <Input
+        placeholder={t("msgInputText")}
+        fontWeight="medium"
+        variant="unstyled"
+        value={text}
+        onChange={handleInputChange}
         disabled={isLoading}
-        onClick={() => setRefreshGreeting(true)}
-        pl="0px"
+        onKeyUp={(e) => {
+          if (e.key === "Enter" && text !== "") {
+            onSubmitQueryTextMutation();
+          }
+        }}
+        bgColor={colorMode === "light" ? "cardBgColorLight" : "gray.700"}
+        borderRadius="1.125rem"
+        h="3rem"
+        px="0.875rem"
       />
-
-      <InputGroup display="flex" alignItems="center">
-        <Input
-          placeholder={t("msgInputText")}
-          fontWeight="medium"
-          variant="unstyled"
-          value={text}
-          onChange={handleInputChange}
-          disabled={isLoading}
-          onKeyUp={(e) => {
-            if (e.key === "Enter" && text !== "") {
-              onSubmitQueryTextMutation();
-            }
-          }}
-          bgColor={colorMode === "light" ? "cardBgColorLight" : "gray.700"}
-          borderRadius="1.125rem"
-          h="3rem"
-          px="0.875rem"
-        />
-        {text && (
-          <InputRightElement h="3rem" display="flex" alignItems="center">
-            <Button
-              h="2.5rem"
-              p="0px"
-              bgColor="#D2D7F4"
-              borderRadius="1rem"
-              onClick={() => onSubmitQueryTextMutation()}
-              mr="0.875rem"
-            >
-              <Image
-                alt="send button"
-                src="/inputSendIcon.svg"
-                w="1.5rem"
-                h="1.5rem"
-                style={{ fill: "#3857E3" }}
-              />
-            </Button>
-          </InputRightElement>
-        )}
-      </InputGroup>
-    </Flex>
+      {text && (
+        <InputRightElement h="3rem" display="flex" alignItems="center">
+          <Button
+            h="2.5rem"
+            p="0px"
+            bgColor="#D2D7F4"
+            borderRadius="1rem"
+            onClick={() => onSubmitQueryTextMutation()}
+            mr="0.875rem"
+          >
+            <Image
+              alt="send button"
+              src="/inputSendIcon.svg"
+              w="1.5rem"
+              h="1.5rem"
+              style={{ fill: "#3857E3" }}
+            />
+          </Button>
+        </InputRightElement>
+      )}
+    </InputGroup>
   );
 }

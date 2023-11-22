@@ -17,6 +17,7 @@ import MyMessageWithFormat from "../../organisms/myMessageWithFormat";
 import GreetingOrFail from "../../organisms/greetingOrFail";
 import CustomCards from "../../organisms/customCards";
 import { useRouter } from "next/router";
+import "regenerator-runtime/runtime";
 
 enum SENDER_ENUM {
   bot = "bot",
