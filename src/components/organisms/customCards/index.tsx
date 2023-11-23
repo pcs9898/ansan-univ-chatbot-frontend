@@ -22,7 +22,7 @@ function CustomCards({ cardsProps, isLoading }: ICardsProps) {
     <Flex gap="0.5rem" w="100%" borderRadius="0px">
       <CustomAvatar />
 
-      <Flex flexDir="column" w="98%" overflowX="hidden">
+      <Flex flexDir="column" w="98%" overflowX="hidden" borderRadius="0px">
         {isLoading ? (
           <LoadingMessage />
         ) : (

@@ -5,9 +5,9 @@ export default function LoadingMessage() {
   return (
     <Card
       p="1rem"
+      pl="0px"
       variant="unstyled"
       colorScheme="blue"
-      gap="0.625rem"
       w="max-content"
       display="flex"
       alignItems="center"
