@@ -116,11 +116,7 @@ function Header() {
       setSupportMic(false);
     }
 
-    if (
-      typeof navigator !== "undefined" &&
-      navigator.mediaDevices &&
-      navigator.mediaDevices.getUserMedia
-    ) {
+    if (typeof window !== "undefined") {
       navigator.mediaDevices
         .getUserMedia({ audio: true })
         .then((stream) => {
