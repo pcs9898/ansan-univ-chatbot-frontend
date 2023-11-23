@@ -115,18 +115,22 @@ function Header() {
     if (!browserSupportsSpeechRecognition) {
       setSupportMic(false);
     }
-  }, []);
 
-  useEffect(() => {
-    navigator.mediaDevices
-      .getUserMedia({ audio: true })
-      .then((stream) => {
-        setMicAccess(true);
-        stream.getTracks().forEach((track) => track.stop()); // 마이크 스트림을 종료
-      })
-      .catch((err) => {
-        setMicAccess(false);
-      });
+    if (
+      typeof navigator !== "undefined" &&
+      navigator.mediaDevices &&
+      navigator.mediaDevices.getUserMedia
+    ) {
+      navigator.mediaDevices
+        .getUserMedia({ audio: true })
+        .then((stream) => {
+          setMicAccess(true);
+          stream.getTracks().forEach((track) => track.stop()); // 마이크 스트림을 종료
+        })
+        .catch((err) => {
+          setMicAccess(false);
+        });
+    }
   }, []);
 
   return (
