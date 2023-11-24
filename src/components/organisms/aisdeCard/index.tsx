@@ -53,8 +53,8 @@ export default function AsideCard() {
           bgColor="#D2D7F4"
           imageSettings={{
             src: "/avatarImage.svg",
-            width: 50,
-            height: 50,
+            width: 40,
+            height: 40,
             excavate: false,
           }}
         />
