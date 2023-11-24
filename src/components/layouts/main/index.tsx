@@ -9,15 +9,7 @@ interface IMainLayoutProps {
 
 export default function MainLayout({ children }: IMainLayoutProps) {
   return (
-    <Box
-      as="main"
-      p={0}
-      m={0}
-      mt="5rem"
-      mb="4rem"
-      width="100%"
-      borderRadius="0px"
-    >
+    <Box as="main" p={0} m={0} mb="4rem" width="100%" borderRadius="0px">
       <SectionLayoutChatArea>{children}</SectionLayoutChatArea>
       <SectionLayoutInputArea />
     </Box>

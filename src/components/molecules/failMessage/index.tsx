@@ -12,7 +12,7 @@ export default function FailMessage() {
       variant="unstyled"
       colorScheme="blue"
       gap="0.625rem"
-      bgColor={colorMode === "light" ? "cardBgColorLight" : "cardBgColorDark"}
+      bgColor={colorMode === "light" ? "cardBgColorLight" : "gray.700"}
       maxW={{ base: "85%", sm: "21.25rem" }}
       h="max-content"
     >

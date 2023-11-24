@@ -88,6 +88,22 @@ const localeObg = {
   ],
 };
 
+const test = {
+  position: "fixed",
+  top: 0,
+  left: 52,
+  width: 640,
+  transform: "translateZ(0)",
+};
+
+interface IHeaderProps {
+  position: any;
+  top: any;
+  left: any;
+  width: any;
+  transform: any;
+}
+
 function Header() {
   const router = useRouter();
   const { t } = useTranslation();
@@ -127,14 +143,18 @@ function Header() {
           setMicAccess(false);
         });
     }
-  }, []);
+  }, [browserSupportsSpeechRecognition]);
 
   return (
     <Flex
+      id="header"
       borderRadius="0px"
       h="5rem"
+      w="100%"
       alignItems="center"
       justifyContent="space-between"
+      zIndex={10}
+      bgColor={colorMode === "light" ? "white" : "gray.800"}
     >
       <Flex alignItems="center" gap="0.625rem">
         <CustomAvatar isBigAvatar={true} />
@@ -183,7 +203,7 @@ function Header() {
           />
         )}
 
-        <Show below="sm">
+        <Show below="33.95rem">
           <IconButton
             aria-label="more button"
             icon={<MoreVertIcon />}
@@ -191,6 +211,7 @@ function Header() {
             variant="ghost"
           />
         </Show>
+
         <Drawer placement="bottom" onClose={onClose} isOpen={isOpen}>
           <DrawerOverlay style={{ borderRadius: "0px" }} />
           <DrawerContent borderTopRadius="1.125rem" borderBottomRadius="0px">
@@ -255,7 +276,7 @@ function Header() {
           </DrawerContent>
         </Drawer>
 
-        <Show above="sm">
+        <Show above="34rem">
           <IconButton
             as={Button}
             aria-label="colorModeButton"

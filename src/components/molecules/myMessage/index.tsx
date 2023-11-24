@@ -12,10 +12,10 @@ export default function MyMessage({ text }: IMyMessageProps) {
       variant="unstyled"
       colorScheme="blue"
       bgColor="myMessageColorLight"
-      w="max-content"
+      // w="max-content"
       color="white"
     >
-      <Text fontWeight="medium" fontSize="1rem">
+      <Text fontWeight="medium" fontSize="1rem" whiteSpace="normal">
         {text}
       </Text>
     </Card>

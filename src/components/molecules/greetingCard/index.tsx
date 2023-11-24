@@ -77,20 +77,20 @@ export default function GreetingCard() {
       <Grid
         gridTemplateColumns="repeat(3, 1fr)"
         gap="0.5rem"
-        bgColor={colorMode === "light" ? "cardBgColorLight" : "cardBgColorDark"}
+        bgColor={colorMode === "light" ? "cardBgColorLight" : "gray.700"}
         py="0.625rem"
         px="0.75rem"
-        maxW="40rem"
-        w={{ base: "85%", md: "40rem" }}
+        w={{ base: "85%" }}
       >
         {GreetingCardButtonIcons.map((iconName, i) => {
-          // const IconComponent = iconName;
           return (
             <Button
               key={i}
               display="flex"
               flexDir="column"
-              bgColor="white"
+              bgColor={
+                colorMode === "light" ? "white" : "sendMsgBtnBgColorLight"
+              }
               w="100%"
               p="0.5rem"
               gap="0.5rem"
@@ -110,7 +110,7 @@ export default function GreetingCard() {
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
-                color="mainColorLight"
+                color={colorMode === "light" ? "mainColorLight" : "black"}
               >
                 {t(`greetingCardMenu${i + 1}`)}
               </Text>

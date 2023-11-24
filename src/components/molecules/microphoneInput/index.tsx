@@ -4,6 +4,7 @@ import SpeechRecognition, {
 } from "react-speech-recognition";
 import {
   Box,
+  Button,
   Center,
   CloseButton,
   Flex,
@@ -63,7 +64,7 @@ export default function MicrophoneInput() {
 
       const timeoutId = setTimeout(() => {
         handleOnClickStopButton();
-      }, 5000);
+      }, 3000);
 
       setSilenceTimeoutId(timeoutId);
     } else if (recording && transcript.length > currentIndex) {
@@ -95,6 +96,23 @@ export default function MicrophoneInput() {
       setRecording(false);
     };
   }, []);
+
+  useEffect(() => {
+    const resetAction = async () => {
+      setDisableMicBtn(true);
+      setRecording(false);
+
+      await SpeechRecognition.stopListening();
+      resetTranscript();
+      if (silenceTimeoutId) clearTimeout(silenceTimeoutId);
+
+      setCurrentIndex(0);
+      setDisplayText("");
+    };
+
+    resetAction();
+    setDisableMicBtn(false);
+  }, [languageCode]);
 
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doest support speech recognition.</span>;
@@ -150,20 +168,20 @@ export default function MicrophoneInput() {
         alignItems="center"
         py="0.625rem"
         px="0.75rem"
-        bgColor="white"
+        bgColor={colorMode === "light" ? "cardBgColorLight" : "null"}
         position="relative"
+        pr="2rem"
       >
         {recording ? (
           <>
             {displayText}
-            <Box as="span" animation={`${blink} 1s infinite`}>
+            <Text as="span" animation={`${blink} 1s infinite`}>
               |
-            </Box>
+            </Text>
             {displayText !== "" && (
-              <IconButton
-                variant="ghost"
-                aria-label="erase button"
-                icon={<CloseButton color="red" size="large" />}
+              <CloseButton
+                color="red"
+                size="lg"
                 position="absolute"
                 right="0.125rem"
                 onClick={handleOnClickCancelButton}

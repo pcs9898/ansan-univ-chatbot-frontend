@@ -42,6 +42,23 @@ function CustomCards({ cardsProps, isLoading }: ICardsProps) {
                     "::-webkit-scrollbar-thumb": {},
                   },
                   scrollSnapType: "x mandatory",
+                  // Webkit 스크롤바 스타일링
+                  "::-webkit-scrollbar": {
+                    height: "8px",
+                  },
+                  "::-webkit-scrollbar-track": {
+                    background: "#f1f1f1",
+                  },
+                  "::-webkit-scrollbar-thumb": {
+                    background: "#888",
+                    borderRadius: "4px",
+                  },
+                  "::-webkit-scrollbar-thumb:hover": {
+                    background: "#555",
+                  },
+                  // Firefox 스크롤바 스타일링
+                  scrollbarWidth: "thin",
+                  scrollbarColor: "#888 #f1f1f1",
                 }}
                 borderRadius="0px"
                 w="100%"

@@ -42,7 +42,7 @@ export default function CustomCard({ customCardProps }: ICustomCardProps) {
       px="0.75rem"
       variant="unstyled"
       gap="0.625rem"
-      bgColor={colorMode === "light" ? "cardBgColorLight" : "cardBgColorDark"}
+      bgColor={colorMode === "light" ? "cardBgColorLight" : "gray.700"}
       minW={{ base: "85%", sm: "21.25rem" }}
       w={{ base: "85%", sm: "21.25rem" }}
       maxW={{ base: "85%", sm: "21.25rem" }}
@@ -76,8 +76,10 @@ export default function CustomCard({ customCardProps }: ICustomCardProps) {
               <Button
                 key={i}
                 fontSize="1rem"
-                bgColor="white"
-                color="mainColorLight"
+                bgColor={
+                  colorMode === "light" ? "white" : "sendMsgBtnBgColorLight"
+                }
+                color={colorMode === "light" ? "mainColorLight" : "black"}
                 onClick={() => button.link && openPageInNewTab(button.link)}
               >
                 <Text whiteSpace="normal">{button.buttonText}</Text>
@@ -86,8 +88,10 @@ export default function CustomCard({ customCardProps }: ICustomCardProps) {
               <Button
                 key={i}
                 fontSize="1rem"
-                bgColor="white"
-                color="mainColorLight"
+                bgColor={
+                  colorMode === "light" ? "white" : "sendMsgBtnBgColorLight"
+                }
+                color={colorMode === "light" ? "mainColorLight" : "black"}
                 onClick={() =>
                   handleOnClick({
                     postback: button.postBack,

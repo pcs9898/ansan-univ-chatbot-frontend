@@ -41,3 +41,8 @@ export const eventNameState = atom({
   key: "eventNameState",
   default: "",
 });
+
+export const bottomListRefState = atom({
+  key: "bottomListRefState",
+  default: null,
+});

@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import HomePresenter from "../../templates/home/home.presenter";
 import {
   LANGUAGE_CODE_ENUM,
+  bottomListRefState,
   eventNameState,
   inputMethodState,
   isInputButtonLoading,
@@ -18,6 +19,7 @@ import GreetingOrFail from "../../organisms/greetingOrFail";
 import CustomCards from "../../organisms/customCards";
 import { useRouter } from "next/router";
 import "regenerator-runtime/runtime";
+import Cookies from "js-cookie";
 
 enum SENDER_ENUM {
   bot = "bot",
@@ -33,13 +35,12 @@ export default function HomeContainer() {
   const [isLoading, setIsLoading] = useRecoilState(isInputButtonLoading);
   const [messageText, setMessageText] = useRecoilState(messageTextState);
   const [eventName, setEventName] = useRecoilState(eventNameState);
+  const [bottomListRef, setBottomListRef] = useRecoilState(bottomListRefState);
   const [refreshGreeting, setRefreshGreeting] =
     useRecoilState(refreshGreetingState);
   const [chatList, setChatList] = useState([] as any);
-  const bottomListRef = useRef(null);
   const router = useRouter();
   const [languageCode, setLanguageCode] = useRecoilState(languageCodeState);
-  const firstRender = useRef(true);
   const inputMethod = useRecoilValue(inputMethodState);
 
   const queryTextMutation = useMutation({
@@ -95,17 +96,23 @@ export default function HomeContainer() {
   });
 
   useEffect(() => {
-    if (router.locale === "en") {
-      setLanguageCode(LANGUAGE_CODE_ENUM.en);
-    } else {
-      setLanguageCode(LANGUAGE_CODE_ENUM.ko);
-    }
+    setChatList([]);
+
     const newMessage = {
       sender: SENDER_ENUM.bot,
       message: "greeting",
     };
     addNewMessage(newMessage);
-  }, []);
+  }, [languageCode]);
+
+  useEffect(() => {
+    if (router.locale === "en") {
+      setLanguageCode(LANGUAGE_CODE_ENUM.en);
+    } else {
+      setLanguageCode(LANGUAGE_CODE_ENUM.ko);
+    }
+    Cookies.set("locale", router.locale);
+  }, [router.locale]);
 
   useEffect(() => {
     if (isLoading) {
@@ -144,21 +151,7 @@ export default function HomeContainer() {
   }, [refreshGreeting]);
 
   useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false;
-      return;
-    }
-    setChatList([]);
-
-    const newMessage = {
-      sender: SENDER_ENUM.bot,
-      message: "greeting",
-    };
-    addNewMessage(newMessage);
-  }, [languageCode]);
-
-  useEffect(() => {
-    if (bottomListRef.current) {
+    if (bottomListRef?.current) {
       setTimeout(() => {
         bottomListRef.current.scrollTop = bottomListRef.current.scrollHeight;
       }, 5);
@@ -184,12 +177,12 @@ export default function HomeContainer() {
   });
 
   useEffect(() => {
-    if (bottomListRef.current) {
+    if (bottomListRef?.current) {
       setTimeout(() => {
         bottomListRef.current.scrollTop = bottomListRef.current.scrollHeight;
       }, 5);
     }
-  }, [renderedChatList]);
+  }, [renderedChatList, bottomListRef]);
 
   if (queryTextMutation.isPending || queryEventMutation.isPending) {
     renderedChatList.push(
@@ -197,10 +190,5 @@ export default function HomeContainer() {
     );
   }
 
-  return (
-    <HomePresenter
-      renderedChatList={renderedChatList}
-      bottomListRef={bottomListRef}
-    />
-  );
+  return <HomePresenter renderedChatList={renderedChatList} />;
 }

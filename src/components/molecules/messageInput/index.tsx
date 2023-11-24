@@ -68,7 +68,7 @@ export default function MessageInput() {
           <Button
             h="2.5rem"
             p="0px"
-            bgColor="#D2D7F4"
+            bgColor="sendMsgBtnBgColorLight"
             borderRadius="1rem"
             onClick={() => onSubmitQueryTextMutation()}
             mr="0.875rem"
@@ -78,7 +78,7 @@ export default function MessageInput() {
               src="/inputSendIcon.svg"
               w="1.5rem"
               h="1.5rem"
-              style={{ fill: "#3857E3" }}
+              style={{ fill: "myMessageColorLight" }}
             />
           </Button>
         </InputRightElement>
