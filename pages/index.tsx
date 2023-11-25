@@ -19,7 +19,7 @@ export default function Home(props: any) {
           property="og:image"
           content={
             process.env.NEXT_PUBLIC_GOOGLE_STORAGE_IMAGE_URL +
-            "/avatarImage.png"
+            "/avatarImage.jpg"
           }
         />
       </Head>
