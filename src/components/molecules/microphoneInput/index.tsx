@@ -97,22 +97,22 @@ export default function MicrophoneInput() {
     };
   }, []);
 
-  useEffect(() => {
-    const resetAction = async () => {
-      setDisableMicBtn(true);
-      setRecording(false);
+  // useEffect(() => {
+  //   const resetAction = async () => {
+  //     setDisableMicBtn(true);
+  //     setRecording(false);
 
-      await SpeechRecognition.stopListening();
-      resetTranscript();
-      if (silenceTimeoutId) clearTimeout(silenceTimeoutId);
+  //     await SpeechRecognition.stopListening();
+  //     resetTranscript();
+  //     if (silenceTimeoutId) clearTimeout(silenceTimeoutId);
 
-      setCurrentIndex(0);
-      setDisplayText("");
-    };
+  //     setCurrentIndex(0);
+  //     setDisplayText("");
+  //   };
 
-    resetAction();
-    setDisableMicBtn(false);
-  }, [languageCode]);
+  //   resetAction();
+  //   setDisableMicBtn(false);
+  // }, [languageCode]);
 
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doest support speech recognition.</span>;
