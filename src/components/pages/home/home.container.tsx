@@ -42,6 +42,7 @@ export default function HomeContainer() {
   const router = useRouter();
   const [languageCode, setLanguageCode] = useRecoilState(languageCodeState);
   const inputMethod = useRecoilValue(inputMethodState);
+  const [firstRender, setFirstRender] = useState(true);
 
   const queryTextMutation = useMutation({
     mutationFn: QueryTextMutation,
@@ -96,6 +97,24 @@ export default function HomeContainer() {
   });
 
   useEffect(() => {
+    if (router.locale === "en") {
+      setLanguageCode(LANGUAGE_CODE_ENUM.en);
+    } else {
+      setLanguageCode(LANGUAGE_CODE_ENUM.ko);
+    }
+
+    const newMessage = {
+      sender: SENDER_ENUM.bot,
+      message: "greeting",
+    };
+    addNewMessage(newMessage);
+  }, []);
+
+  useEffect(() => {
+    if (firstRender) {
+      setFirstRender(false);
+      return;
+    }
     setChatList([]);
 
     const newMessage = {
@@ -106,12 +125,21 @@ export default function HomeContainer() {
   }, [languageCode]);
 
   useEffect(() => {
-    if (router.locale === "en") {
-      setLanguageCode(LANGUAGE_CODE_ENUM.en);
-    } else {
-      setLanguageCode(LANGUAGE_CODE_ENUM.ko);
+    if (firstRender) {
+      setFirstRender(false);
+      return;
     }
-    Cookies.set("locale", router.locale);
+    const preferredLocale = Cookies.get("locale");
+    if (router.locale !== preferredLocale) {
+      router.push(router.pathname, router.asPath, { locale: preferredLocale });
+      setChatList([]);
+
+      const newMessage = {
+        sender: SENDER_ENUM.bot,
+        message: "greeting",
+      };
+      addNewMessage(newMessage);
+    }
   }, [router.locale]);
 
   useEffect(() => {

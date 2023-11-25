@@ -28,21 +28,6 @@ const App = ({ Component, pageProps }: AppProps) => {
     }
   }, []);
 
-  useEffect(() => {
-    const handleRouteChange = (url) => {
-      if (url === "/") {
-        // 현재 페이지의 경로를 확인합니다.
-        router.push(router.asPath); // 현재 페이지로 다시 이동합니다.
-      }
-    };
-
-    window.addEventListener("popstate", handleRouteChange);
-
-    return () => {
-      window.removeEventListener("popstate", handleRouteChange);
-    };
-  }, []);
-
   return (
     <ChakraProvider theme={customTheme}>
       <RecoilRoot>
@@ -54,7 +39,7 @@ const App = ({ Component, pageProps }: AppProps) => {
             <Head>
               <meta
                 name="viewport"
-                content="initial-scale=0.8, width=device-width"
+                content="initial-scale=0.9, width=device-width"
               />
             </Head>
             <Component {...pageProps} />

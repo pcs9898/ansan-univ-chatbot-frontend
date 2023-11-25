@@ -30,5 +30,6 @@
   "settingsLanguage": "Language",
   "settingsLanguageBtn1": "KOR",
   "settingsLanguageBtn2": "ENG",
-  "asideCardText": "Easily scan QR!"
+  "asideCardText": "Easily scan QR!",
+  "404PageText": "Access Denied"
 }

@@ -30,5 +30,6 @@
   "settingsLanguage": "언어",
   "settingsLanguageBtn1": "한국어",
   "settingsLanguageBtn2": "영어",
-  "asideCardText": "편하게 QR 스캔하세요!"
+  "asideCardText": "편하게 QR 스캔하세요!",
+  "404PageText": "접근 불가"
 }

@@ -35,30 +35,34 @@ function CustomCards({ cardsProps, isLoading }: ICardsProps) {
                 mt="0.5rem"
                 overflowX="auto"
                 sx={{
+                  scrollSnapType: "x mandatory",
                   "@media (max-width: 32.3125rem)": {
                     "::-webkit-scrollbar": {
                       display: "none",
                     },
                     "::-webkit-scrollbar-thumb": {},
                   },
-                  scrollSnapType: "x mandatory",
-                  // Webkit 스크롤바 스타일링
-                  "::-webkit-scrollbar": {
-                    height: "8px",
+                  "@media (min-width: 32.3125rem)": {
+                    "&:hover": {
+                      // Webkit 스크롤바 스타일링
+                      "::-webkit-scrollbar": {
+                        height: "8px",
+                      },
+                      "::-webkit-scrollbar-track": {
+                        background: "#f1f1f1",
+                      },
+                      "::-webkit-scrollbar-thumb": {
+                        background: "#888",
+                        borderRadius: "4px",
+                      },
+                      "::-webkit-scrollbar-thumb:hover": {
+                        background: "#555",
+                      },
+                      // Firefox 스크롤바 스타일링
+                      scrollbarWidth: "thin",
+                      scrollbarColor: "#888 #f1f1f1",
+                    },
                   },
-                  "::-webkit-scrollbar-track": {
-                    background: "#f1f1f1",
-                  },
-                  "::-webkit-scrollbar-thumb": {
-                    background: "#888",
-                    borderRadius: "4px",
-                  },
-                  "::-webkit-scrollbar-thumb:hover": {
-                    background: "#555",
-                  },
-                  // Firefox 스크롤바 스타일링
-                  scrollbarWidth: "thin",
-                  scrollbarColor: "#888 #f1f1f1",
                 }}
                 borderRadius="0px"
                 w="100%"
