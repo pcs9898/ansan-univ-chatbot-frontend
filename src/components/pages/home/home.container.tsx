@@ -97,7 +97,8 @@ export default function HomeContainer() {
   });
 
   useEffect(() => {
-    if (router.locale === "en") {
+    const preferredLocale = Cookies.get("locale");
+    if (preferredLocale === "en") {
       setLanguageCode(LANGUAGE_CODE_ENUM.en);
     } else {
       setLanguageCode(LANGUAGE_CODE_ENUM.ko);
