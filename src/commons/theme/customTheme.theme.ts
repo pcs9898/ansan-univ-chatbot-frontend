@@ -18,8 +18,7 @@ export const customTheme = extendTheme({
       baseStyle: {
         _hover: {
           "@media (hover: none)": {
-            backgroundColor: "initial", // 버튼의 기본 배경색으로 설정하세요.
-            color: "initial", // 버튼의 기본 텍스트 색상으로 설정하세요.
+            pointerEvents: "none",
           },
         },
       },
