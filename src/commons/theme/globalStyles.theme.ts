@@ -6,16 +6,16 @@ export const globalStyles = {
       padding: 0,
       borderRadius: "16px",
       "-webkit-tap-highlight-color": "transparent",
-      "@media (hover: hover)": {
+      "@media (hover: none)": {
         "*": {
           "&:hover": {
-            opacity: 1,
+            opacity: 0,
           },
         },
       },
     },
     "html, body": {
-      height: "100dvh", // 전체 높이를 설정
+      height: "100dvh",
       margin: 0,
       padding: 0,
     },
