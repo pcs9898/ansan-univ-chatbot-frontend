@@ -27,6 +27,12 @@ const App = ({ Component, pageProps }: AppProps) => {
     } else {
       Cookies.set("locale", locale);
     }
+
+    if ("ontouchstart" in window) {
+      let styleNode = document.createElement("style");
+      styleNode.innerHTML = `* { cursor: default !important; }`;
+      document.body.appendChild(styleNode);
+    }
   }, []);
 
   return (
