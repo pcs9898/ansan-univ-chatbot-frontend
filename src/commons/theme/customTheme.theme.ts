@@ -15,33 +15,9 @@ export const customTheme = extendTheme({
   components: {
     Card: cardTheme,
     Button: {
-      variants: {
-        solid: (props: StyleFunctionProps) => ({
-          "@media(hover: none)": {
-            _hover: {
-              bg: defaultTheme.components.Button.variants.solid(props).bg,
-            },
-          },
-        }),
-
-        // 다른 버튼 variant에 대해 위와 같은 방식으로 적용
-        outline: (props: StyleFunctionProps) => ({
-          "@media(hover: none)": {
-            _hover: {
-              bg: defaultTheme.components.Button.variants.outline(props).bg,
-            },
-          },
-        }),
-
-        ghost: (props: StyleFunctionProps) => ({
-          "@media(hover: none)": {
-            _hover: {
-              bg: defaultTheme.components.Button.variants.ghost(props).bg,
-            },
-          },
-        }),
-
-        // 추가로 필요한 버튼 variant에 대해 동일하게 적용
+      baseStyle: {
+        _hover: {},
+        _active: {},
       },
     },
   },
