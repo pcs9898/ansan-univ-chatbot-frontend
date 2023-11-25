@@ -15,10 +15,10 @@ export default function GreetingMessage() {
       bgColor={colorMode === "light" ? "cardBgColorLight" : "gray.700"}
       maxW={{ base: "85%", sm: "21.25rem" }}
     >
-      <Text fontSize="1rem" fontWeight="medium">
+      <Text fontSize="1rem" fontWeight="medium" whiteSpace="normal">
         {t("greetingMsg1")}
       </Text>
-      <Text fontSize="1rem" fontWeight="medium">
+      <Text fontSize="1rem" fontWeight="medium" whiteSpace="normal">
         {t("greetingMsg2")}
       </Text>
     </Card>

@@ -16,10 +16,10 @@ export default function FailMessage() {
       maxW={{ base: "85%", sm: "21.25rem" }}
       h="max-content"
     >
-      <Text fontSize="1rem" fontWeight="medium">
+      <Text fontSize="1rem" fontWeight="medium" whiteSpace="normal">
         {t("failMessage1")}
       </Text>
-      <Text fontSize="1rem" fontWeight="medium">
+      <Text fontSize="1rem" fontWeight="medium" whiteSpace="normal">
         {t("failMessage2")}
       </Text>
     </Card>
