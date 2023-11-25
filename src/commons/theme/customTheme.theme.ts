@@ -14,12 +14,5 @@ export const customTheme = extendTheme({
   colors: customColors,
   components: {
     Card: cardTheme,
-    Button: {
-      baseStyle: {
-        _hover: {
-          bg: ["initial", "initial", "green.500", "red.500"],
-        },
-      },
-    },
   },
 });

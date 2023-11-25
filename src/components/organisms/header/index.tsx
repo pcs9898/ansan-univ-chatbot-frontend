@@ -228,6 +228,7 @@ function Header() {
                   </Flex>
                   <Switch
                     size="lg"
+                    variant={{ base: "unstyled", sm: "solid" }}
                     defaultChecked={colorMode === "dark" ? true : false}
                     onChange={toggleColorMode}
                     colorScheme="mainColorLight"
@@ -291,7 +292,7 @@ function Header() {
               <>
                 <MenuButton
                   as={Button}
-                  variant="ghost"
+                  variant={{ base: "unstyled", sm: "ghost" }}
                   isActive={isOpen}
                   rightIcon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
                   px="0.5rem"

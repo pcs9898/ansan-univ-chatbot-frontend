@@ -50,7 +50,7 @@ export default function SectionLayoutInputArea({}) {
               }
             />
           }
-          variant="ghost"
+          variant={{ base: "unstyled", sm: "ghost" }}
           disabled={isLoading}
           onClick={() => setRefreshGreeting(true)}
           pl="0px"
