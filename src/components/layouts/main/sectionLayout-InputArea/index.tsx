@@ -54,6 +54,7 @@ export default function SectionLayoutInputArea({}) {
           disabled={isLoading}
           onClick={() => setRefreshGreeting(true)}
           pl="0px"
+          sx={{ _hover: {} }}
         />
         {inputMethod === INPUT_METHOD_ENUM.keyboard ? (
           <MessageInput />
