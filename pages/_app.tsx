@@ -12,6 +12,7 @@ import { queryClient } from "@/src/commons/libraries/react-query/react-query";
 import chakraColorModeConfig from "@/src/commons/theme/config.theme";
 import Layouts from "@/src/components/layouts/index";
 import Head from "next/head.js";
+import { Global, css } from "@emotion/react";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
@@ -42,6 +43,15 @@ const App = ({ Component, pageProps }: AppProps) => {
                 content="initial-scale=0.9, width=device-width"
               />
             </Head>
+            <Global
+              styles={css`
+                @media (hover: none) {
+                  * {
+                    _hover: none !important;
+                  }
+                }
+              `}
+            />
             <Component {...pageProps} />
           </Layouts>
         </QueryClientProvider>
