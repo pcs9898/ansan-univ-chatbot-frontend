@@ -15,7 +15,13 @@ export default function Home(props: any) {
         <title>{t("headTitle")}</title>
         <meta property="og:title" content={t("headerChatbotName")} />
         <meta property="og:description" content={t("greetingMsg1")} />
-        <meta property="og:image" content="/avatarImage.svg" />
+        <meta
+          property="og:image"
+          content={
+            process.env.NEXT_PUBLIC_GOOGLE_STORAGE_IMAGE_URL +
+            "/avatarImage.png"
+          }
+        />
       </Head>
 
       <HomeContainer />
