@@ -30,7 +30,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
     if ("ontouchstart" in window) {
       let styleNode = document.createElement("style");
-      styleNode.innerHTML = `* { cursor: default !important; }`;
+      styleNode.innerHTML = `* { pointer-events: auto !important; }`;
       document.body.appendChild(styleNode);
     }
   }, []);
