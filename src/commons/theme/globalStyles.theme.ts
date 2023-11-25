@@ -5,13 +5,9 @@ export const globalStyles = {
       margin: 0,
       padding: 0,
       borderRadius: "16px",
-      "-webkit-tap-highlight-color": "transparent",
-      "@media (hover: none)": {
-        "*": {
-          "&:hover": {
-            opacity: 0,
-          },
-        },
+      WebkitTapHighlightColor: "transparent",
+      _hover: {
+        bg: ["initial", "initial", "green.500", "red.500"],
       },
     },
     "html, body": {
