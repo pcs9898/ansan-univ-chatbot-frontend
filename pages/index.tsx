@@ -2,7 +2,6 @@ import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { withTranslations } from "@/src/commons/utils/withTranslations";
 import HomeContainer from "@/src/components/pages/home/home.container";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export const getStaticProps = withTranslations();
 
@@ -22,19 +21,10 @@ export default function Home(props: any) {
             "/avatarImage.jpg"
           }
         />
+        <meta name="description" content={t("greetingMsg1")} />
       </Head>
 
       <HomeContainer />
     </>
   );
 }
-
-// export async function getServerSideProps(context) {
-//   const { locale, query } = context;
-
-//   return {
-//     props: {
-//       ...(await serverSideTranslations(locale, ["common", "footer"])),
-//     },
-//   };
-// }
