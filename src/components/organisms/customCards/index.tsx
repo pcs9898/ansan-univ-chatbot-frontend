@@ -36,16 +36,14 @@ function CustomCards({ cardsProps, isLoading }: ICardsProps) {
                 overflowX="auto"
                 sx={{
                   scrollSnapType: "x mandatory",
-                  "@media (max-width: 32.3125rem)": {
-                    "::-webkit-scrollbar": {
-                      display: "none",
-                    },
-                    "::-webkit-scrollbar-thumb": {},
+                  "::-webkit-scrollbar": {
+                    display: "none",
                   },
                   "@media (min-width: 32.3125rem)": {
                     "&:hover": {
                       // Webkit 스크롤바 스타일링
                       "::-webkit-scrollbar": {
+                        display: "block",
                         height: "8px",
                       },
                       "::-webkit-scrollbar-track": {

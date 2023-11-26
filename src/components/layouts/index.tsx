@@ -52,7 +52,7 @@ export default function Layouts({ children }: ILayoutsProps) {
         scrollbar-color: #888 transparent;
       `}
     >
-      <Box w={{ base: "100%", lg: "40rem" }} maxW="40rem">
+      <Box w={{ base: "100%", lg: "40rem" }} maxW="40rem" borderRadius="0px">
         <Box
           position="fixed"
           top={0}
