@@ -74,24 +74,32 @@ export default function CustomCard({ customCardProps }: ICustomCardProps) {
           {buttons?.map((button, i) => {
             return button.link ? (
               <Button
+                variant={{ base: "unstyled", sm: "solid" }}
                 key={i}
                 fontSize="1rem"
-                bgColor={
-                  colorMode === "light" ? "white" : "sendMsgBtnBgColorLight"
-                }
-                color={colorMode === "light" ? "mainColorLight" : "black"}
+                bgColor={{
+                  sm:
+                    colorMode === "light" ? "white" : "sendMsgBtnBgColorLight",
+                }}
+                color={{
+                  sm: colorMode === "light" ? "mainColorLight" : "black",
+                }}
                 onClick={() => button.link && openPageInNewTab(button.link)}
               >
                 <Text whiteSpace="normal">{button.buttonText}</Text>
               </Button>
             ) : (
               <Button
+                variant={{ base: "unstyled", sm: "solid" }}
                 key={i}
                 fontSize="1rem"
-                bgColor={
-                  colorMode === "light" ? "white" : "sendMsgBtnBgColorLight"
-                }
-                color={colorMode === "light" ? "mainColorLight" : "black"}
+                bgColor={{
+                  sm:
+                    colorMode === "light" ? "white" : "sendMsgBtnBgColorLight",
+                }}
+                color={{
+                  sm: colorMode === "light" ? "mainColorLight" : "black",
+                }}
                 onClick={() =>
                   handleOnClick({
                     postback: button.postBack,

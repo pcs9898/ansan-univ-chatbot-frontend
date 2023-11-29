@@ -21,7 +21,8 @@ export default function Home(props: any) {
             "/avatarImage.jpg"
           }
         />
-        <meta name="description" content={t("greetingMsg1")} />
+        <meta name="keyword" content={t("headerChatbotName")} />
+        <meta name="description" content={t("headerChatbotName")} />
       </Head>
 
       <HomeContainer />

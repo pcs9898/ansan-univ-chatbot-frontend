@@ -183,6 +183,7 @@ function Header() {
           <IconButton
             as={Button}
             aria-label="inputMethodButton"
+            variant="unstyled"
             icon={
               inputMethod === INPUT_METHOD_ENUM.keyboard ? (
                 <MicIcon />
@@ -197,7 +198,6 @@ function Header() {
                   : INPUT_METHOD_ENUM.keyboard
               )
             }
-            variant="unstyled"
             display="flex"
             justifyContent="center"
           />
@@ -205,10 +205,10 @@ function Header() {
 
         <Show below="33.95rem">
           <IconButton
+            variant={{ base: "unstyled", sm: "ghost" }}
             aria-label="more button"
             icon={<MoreVertIcon />}
             onClick={onOpen}
-            variant="ghost"
           />
         </Show>
 
