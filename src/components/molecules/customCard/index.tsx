@@ -5,7 +5,15 @@ import {
   messageTextState,
 } from "@/src/commons/libraries/recoil/recoil";
 import { openPageInNewTab } from "@/src/commons/utils/openPageInNewTab";
-import { Box, Button, Card, Flex, Text, useColorMode } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Card,
+  Flex,
+  Text,
+  useColorMode,
+  useMediaQuery,
+} from "@chakra-ui/react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
 interface ICustomCardProps {
@@ -30,6 +38,7 @@ export default function CustomCard({ customCardProps }: ICustomCardProps) {
   const setMessageText = useSetRecoilState(messageTextState);
   const { colorMode, toggleColorMode } = useColorMode();
   const [languageCode, setLanguageCode] = useRecoilState(languageCodeState);
+  // const [isSmallScreen] = useMediaQuery("(max-width: 30em)");
 
   const handleOnClick = ({ postback, buttonText }: IHandleOnClick) => {
     setMessageText(buttonText);
@@ -74,17 +83,23 @@ export default function CustomCard({ customCardProps }: ICustomCardProps) {
           {buttons?.map((button, i) => {
             return button.link ? (
               <Button
-                variant={{ base: "unstyled", sm: "solid" }}
+                variant="solid"
                 key={i}
                 fontSize="1rem"
-                bgColor={{
-                  sm:
-                    colorMode === "light" ? "white" : "sendMsgBtnBgColorLight",
-                }}
-                color={{
-                  sm: colorMode === "light" ? "mainColorLight" : "black",
-                }}
+                bgColor={
+                  colorMode === "light" ? "white" : "sendMsgBtnBgColorLight"
+                }
+                color={colorMode === "light" ? "mainColorLight" : "black"}
                 onClick={() => button.link && openPageInNewTab(button.link)}
+                _hover={{
+                  base: "",
+                  sm: {
+                    bg:
+                      colorMode === "light"
+                        ? "btnAboveSmBgColorLight"
+                        : "btnAboveSmBgColorDark",
+                  },
+                }}
               >
                 <Text whiteSpace="normal">{button.buttonText}</Text>
               </Button>

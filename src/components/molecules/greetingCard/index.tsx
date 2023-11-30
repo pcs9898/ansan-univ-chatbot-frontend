@@ -69,7 +69,7 @@ export default function GreetingCard() {
   const setEventName = useSetRecoilState(eventNameState);
   const setMessageText = useSetRecoilState(messageTextState);
   const { colorMode, toggleColorMode } = useColorMode();
-  const [isSmallScreen] = useMediaQuery("(max-width: 30em)"); // sm: 30em
+  // const [isSmallScreen] = useMediaQuery("(max-width: 30em)"); // sm: 30em
 
   const handleOnClick = (i: number) => {
     if (router.locale === "ko") {
@@ -97,20 +97,24 @@ export default function GreetingCard() {
               key={i}
               display="flex"
               flexDir="column"
-              // variant={{ base: "solid", sm: "solid" }}
-              bgColor={{
-                base:
-                  colorMode === "light" ? "white" : "sendMsgBtnBgColorLight",
-                sm: colorMode === "light" ? "white" : "sendMsgBtnBgColorLight",
-              }}
+              bgColor={
+                colorMode === "light" ? "white" : "sendMsgBtnBgColorLight"
+              }
               w="100%"
               p="0.5rem"
               gap="0.5rem"
               h="100%"
               onClick={() => handleOnClick(i)}
-              _focus={{ color: "black" }}
               borderRadius="1rem"
-              _hover={isSmallScreen ? {} : { bg: "black" }}
+              _hover={{
+                base: "",
+                sm: {
+                  bg:
+                    colorMode === "light"
+                      ? "btnAboveSmBgColorLight"
+                      : "btnAboveSmBgColorDark",
+                },
+              }}
             >
               <Flex justifyContent="center" alignItems="center">
                 {iconName}

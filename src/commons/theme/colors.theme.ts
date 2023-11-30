@@ -5,4 +5,6 @@ export const customColors = {
   sendMsgBtnBgColorLight: "#D2D7F4",
   formatTimeColor: "#9A9A9A",
   cardBgColorDark: "#9A9A9A",
+  btnAboveSmBgColorLight: "#CDD5DF",
+  btnAboveSmBgColorDark: "#616773",
 };
