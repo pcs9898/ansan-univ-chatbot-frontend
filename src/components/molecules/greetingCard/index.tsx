@@ -1,4 +1,12 @@
-import { Button, Card, Flex, Grid, Text, useColorMode } from "@chakra-ui/react";
+import {
+  Button,
+  Card,
+  Flex,
+  Grid,
+  Text,
+  useColorMode,
+  useMediaQuery,
+} from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 import { useSetRecoilState } from "recoil";
 import {
@@ -61,6 +69,7 @@ export default function GreetingCard() {
   const setEventName = useSetRecoilState(eventNameState);
   const setMessageText = useSetRecoilState(messageTextState);
   const { colorMode, toggleColorMode } = useColorMode();
+  const [isSmallScreen] = useMediaQuery("(max-width: 30em)"); // sm: 30em
 
   const handleOnClick = (i: number) => {
     if (router.locale === "ko") {
@@ -88,7 +97,7 @@ export default function GreetingCard() {
               key={i}
               display="flex"
               flexDir="column"
-              variant={{ base: "link", sm: "solid" }}
+              variant={{ base: "solid", sm: "solid" }}
               bgColor={{
                 base:
                   colorMode === "light" ? "white" : "sendMsgBtnBgColorLight",
@@ -101,6 +110,7 @@ export default function GreetingCard() {
               onClick={() => handleOnClick(i)}
               _focus={{ color: "black" }}
               borderRadius="1rem"
+              _hover={isSmallScreen ? {} : { bg: "black" }}
             >
               <Flex justifyContent="center" alignItems="center">
                 {iconName}
