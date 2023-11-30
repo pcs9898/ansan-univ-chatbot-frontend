@@ -83,7 +83,6 @@ export default function CustomCard({ customCardProps }: ICustomCardProps) {
           {buttons?.map((button, i) => {
             return button.link ? (
               <Button
-                variant="solid"
                 key={i}
                 fontSize="1rem"
                 bgColor={
@@ -105,22 +104,27 @@ export default function CustomCard({ customCardProps }: ICustomCardProps) {
               </Button>
             ) : (
               <Button
-                variant={{ base: "unstyled", sm: "solid" }}
                 key={i}
                 fontSize="1rem"
-                bgColor={{
-                  sm:
-                    colorMode === "light" ? "white" : "sendMsgBtnBgColorLight",
-                }}
-                color={{
-                  sm: colorMode === "light" ? "mainColorLight" : "black",
-                }}
+                bgColor={
+                  colorMode === "light" ? "white" : "sendMsgBtnBgColorLight"
+                }
+                color={colorMode === "light" ? "mainColorLight" : "black"}
                 onClick={() =>
                   handleOnClick({
                     postback: button.postBack,
                     buttonText: button.buttonText,
                   })
                 }
+                _hover={{
+                  base: "",
+                  sm: {
+                    bg:
+                      colorMode === "light"
+                        ? "btnAboveSmBgColorLight"
+                        : "btnAboveSmBgColorDark",
+                  },
+                }}
               >
                 <Text whiteSpace="normal">{button.buttonText}</Text>
               </Button>
