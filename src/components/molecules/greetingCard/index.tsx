@@ -97,7 +97,7 @@ export default function GreetingCard() {
               key={i}
               display="flex"
               flexDir="column"
-              variant={{ base: "solid", sm: "solid" }}
+              // variant={{ base: "solid", sm: "solid" }}
               bgColor={{
                 base:
                   colorMode === "light" ? "white" : "sendMsgBtnBgColorLight",
