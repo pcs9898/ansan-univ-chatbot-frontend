@@ -1,5 +1,5 @@
 import { LANGUAGE_CODE_ENUM } from "@/src/commons/libraries/recoil/recoil";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 
 export interface IQueryTextMutationProps {
   message: string;

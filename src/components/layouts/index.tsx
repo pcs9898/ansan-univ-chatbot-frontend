@@ -1,12 +1,11 @@
-import { ReactNode, useEffect, useRef, useState } from "react";
-import MainLayout from "./main";
-import Header from "../organisms/header";
-import { Box, Flex, Image, Show, Text } from "@chakra-ui/react";
-import { useTranslation } from "next-i18next";
-import AsideCard from "../organisms/aisdeCard";
-import { css } from "@emotion/react";
-import { useRecoilState } from "recoil";
 import { bottomListRefState } from "@/src/commons/libraries/recoil/recoil";
+import { Box, Flex, Show } from "@chakra-ui/react";
+import { css } from "@emotion/react";
+import { ReactNode, useEffect, useRef } from "react";
+import { useRecoilState } from "recoil";
+import AsideCard from "../organisms/aisdeCard";
+import Header from "../organisms/header";
+import MainLayout from "./main";
 
 interface ILayoutsProps {
   children: ReactNode;

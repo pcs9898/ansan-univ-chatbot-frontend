@@ -1,27 +1,21 @@
 import {
   Button,
-  Flex,
-  HStack,
-  IconButton,
   Image,
   Input,
   InputGroup,
   InputRightElement,
   useColorMode,
 } from "@chakra-ui/react";
-import RefreshOutlinedIcon from "@mui/icons-material/RefreshOutlined";
 import { useTranslation } from "next-i18next";
-import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
-import BeatLoader from "react-spinners/BeatLoader";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
-import { ChangeEvent, useState } from "react";
 import {
   eventNameState,
   isInputButtonLoading,
   messageTextState,
   refreshGreetingState,
 } from "@/src/commons/libraries/recoil/recoil";
+import { ChangeEvent, useState } from "react";
 
 export default function MessageInput() {
   const { t } = useTranslation();

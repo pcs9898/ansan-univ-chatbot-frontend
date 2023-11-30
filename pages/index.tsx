@@ -1,7 +1,7 @@
-import Head from "next/head";
-import { useTranslation } from "next-i18next";
 import { withTranslations } from "@/src/commons/utils/withTranslations";
 import HomeContainer from "@/src/components/pages/home/home.container";
+import { useTranslation } from "next-i18next";
+import Head from "next/head";
 
 export const getStaticProps = withTranslations();
 

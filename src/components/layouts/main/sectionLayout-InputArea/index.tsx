@@ -6,7 +6,7 @@ import {
 } from "@/src/commons/libraries/recoil/recoil";
 import MessageInput from "@/src/components/molecules/messageInput";
 import MicrophoneInput from "@/src/components/molecules/microphoneInput";
-import { Box, Flex, IconButton, useColorMode } from "@chakra-ui/react";
+import { Flex, IconButton, useColorMode } from "@chakra-ui/react";
 import RefreshOutlinedIcon from "@mui/icons-material/RefreshOutlined";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 

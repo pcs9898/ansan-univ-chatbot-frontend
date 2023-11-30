@@ -1,7 +1,7 @@
-import { Box, Flex, Image, Show, Text } from "@chakra-ui/react";
+import { Flex, Image, Text } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
-import { useEffect, useState } from "react";
 import QR from "qrcode.react";
+import { useEffect, useState } from "react";
 
 export default function AsideCard() {
   const { t } = useTranslation();

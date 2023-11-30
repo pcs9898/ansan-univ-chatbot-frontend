@@ -1,10 +1,10 @@
 import "regenerator-runtime/runtime";
-import SpeechRecognition, {
-  useSpeechRecognition,
-} from "react-speech-recognition";
 import {
-  Box,
-  Button,
+  isInputButtonLoading,
+  languageCodeState,
+  messageTextState,
+} from "@/src/commons/libraries/recoil/recoil";
+import {
   Center,
   CloseButton,
   Flex,
@@ -13,19 +13,15 @@ import {
   keyframes,
   useColorMode,
 } from "@chakra-ui/react";
-import StopCircleIcon from "@mui/icons-material/StopCircle";
 import MicIcon from "@mui/icons-material/Mic";
-import { useEffect, useState } from "react";
+import StopCircleIcon from "@mui/icons-material/StopCircle";
 import { useTranslation } from "next-i18next";
-import {
-  INPUT_METHOD_ENUM,
-  inputMethodState,
-  isInputButtonLoading,
-  languageCodeState,
-  messageTextState,
-} from "@/src/commons/libraries/recoil/recoil";
-import { useRecoilState, useRecoilValue } from "recoil";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 const pulse = keyframes`
   0% { transform: scale(1); }

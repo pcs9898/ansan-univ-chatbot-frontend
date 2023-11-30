@@ -1,18 +1,18 @@
-import type { AppProps } from "next/app";
-import { appWithTranslation } from "next-i18next";
-import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { useEffect } from "react";
-import Cookies from "js-cookie";
-import { useRouter } from "next/router";
-import { RecoilRoot, useRecoilState, useSetRecoilState } from "recoil";
-import nextI18NextConfig from "../next-i18next.config.js";
-import { customTheme } from "@/src/commons/theme/customTheme.theme";
 import { queryClient } from "@/src/commons/libraries/react-query/react-query";
 import chakraColorModeConfig from "@/src/commons/theme/config.theme";
+import { customTheme } from "@/src/commons/theme/customTheme.theme";
 import Layouts from "@/src/components/layouts/index";
-import Head from "next/head.js";
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import { Global, css } from "@emotion/react";
+import { QueryClientProvider } from "@tanstack/react-query";
+import Cookies from "js-cookie";
+import { appWithTranslation } from "next-i18next";
+import type { AppProps } from "next/app";
+import Head from "next/head.js";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { RecoilRoot } from "recoil";
+import nextI18NextConfig from "../next-i18next.config.js";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();

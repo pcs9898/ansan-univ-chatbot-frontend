@@ -1,5 +1,12 @@
 import "regenerator-runtime/runtime";
 import {
+  INPUT_METHOD_ENUM,
+  LANGUAGE_CODE_ENUM,
+  inputMethodState,
+  languageCodeState,
+} from "@/src/commons/libraries/recoil/recoil";
+import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
+import {
   Button,
   Drawer,
   DrawerBody,
@@ -25,25 +32,18 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { DarkMode, LightMode } from "@mui/icons-material";
-import Cookies from "js-cookie";
-import { useRouter } from "next/router";
-import { useTranslation } from "next-i18next";
-import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
-import { useEffect, useState } from "react";
 import KeyboardIcon from "@mui/icons-material/Keyboard";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { useRecoilState, useSetRecoilState } from "recoil";
 import MicIcon from "@mui/icons-material/Mic";
-import {
-  INPUT_METHOD_ENUM,
-  LANGUAGE_CODE_ENUM,
-  inputMethodState,
-  languageCodeState,
-} from "@/src/commons/libraries/recoil/recoil";
-import CustomAvatar from "../../molecules/customAvatar";
-import ReactCountryFlag from "react-country-flag";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import Cookies from "js-cookie";
+import { useTranslation } from "next-i18next";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import ReactCountryFlag from "react-country-flag";
 import { useSpeechRecognition } from "react-speech-recognition";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import CustomAvatar from "../../molecules/customAvatar";
 
 const localeObg = {
   en: [

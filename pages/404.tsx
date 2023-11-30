@@ -1,10 +1,10 @@
 import { withTranslations } from "@/src/commons/utils/withTranslations";
-import { Box, Flex, useToast } from "@chakra-ui/react";
+import { Flex, useToast } from "@chakra-ui/react";
+import Cookies from "js-cookie";
+import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { useTranslation } from "next-i18next";
 import { PulseLoader } from "react-spinners";
-import Cookies from "js-cookie";
 
 export const getStaticProps = withTranslations();
 

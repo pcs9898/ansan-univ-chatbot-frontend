@@ -1,19 +1,11 @@
 import {
-  Button,
-  Card,
-  Flex,
-  Grid,
-  Text,
-  useColorMode,
-  useMediaQuery,
-} from "@chakra-ui/react";
-import { useTranslation } from "next-i18next";
-import { useSetRecoilState } from "recoil";
-import {
   eventNameState,
   messageTextState,
 } from "@/src/commons/libraries/recoil/recoil";
+import { Button, Flex, Grid, Text, useColorMode } from "@chakra-ui/react";
+import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
+import { useSetRecoilState } from "recoil";
 
 const GreetingCardButtonIcons = [
   "📆",

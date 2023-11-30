@@ -1,19 +1,10 @@
 import {
-  LANGUAGE_CODE_ENUM,
   eventNameState,
   languageCodeState,
   messageTextState,
 } from "@/src/commons/libraries/recoil/recoil";
 import { openPageInNewTab } from "@/src/commons/utils/openPageInNewTab";
-import {
-  Box,
-  Button,
-  Card,
-  Flex,
-  Text,
-  useColorMode,
-  useMediaQuery,
-} from "@chakra-ui/react";
+import { Box, Button, Card, Flex, Text, useColorMode } from "@chakra-ui/react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
 interface ICustomCardProps {

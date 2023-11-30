@@ -1,9 +1,9 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
+import { memo } from "react";
 import CustomAvatar from "../../molecules/customAvatar";
 import CustomCard from "../../molecules/customCard";
 import FormatTime from "../../molecules/formatTime";
 import LoadingMessage from "../../molecules/loadingMessage";
-import { memo } from "react";
 
 interface ICardsProps {
   cardsProps?: {

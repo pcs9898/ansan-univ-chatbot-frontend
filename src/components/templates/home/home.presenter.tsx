@@ -1,14 +1,9 @@
-import { Box, Flex, VStack } from "@chakra-ui/react";
-import GreetingOrFail from "../../organisms/greetingOrFail";
-import MyMessageWithFormat from "../../organisms/myMessageWithFormat";
-import { MutableRefObject, useEffect, useRef, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
 import {
   INPUT_METHOD_ENUM,
   inputMethodState,
-  messageTextState,
 } from "@/src/commons/libraries/recoil/recoil";
-import { css } from "@emotion/react";
+import { VStack } from "@chakra-ui/react";
+import { useRecoilValue } from "recoil";
 
 interface IHomePresenterProps {
   renderedChatList: any;
