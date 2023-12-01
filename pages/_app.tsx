@@ -46,7 +46,7 @@ const App = ({ Component, pageProps }: AppProps) => {
             <Head>
               <meta
                 name="viewport"
-                content="initial-scale=0.95, width=device-width"
+                content="initial-scale=0.95; maximum-scale=0.95; minimum-scale=0.95; user-scalable=no;"
               />
             </Head>
             <Global
