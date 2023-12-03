@@ -53,6 +53,7 @@ const localeObg = {
         svg
         className="emojiFlag"
         style={{ borderRadius: "0px", marginRight: "0.25rem" }}
+        alt="flag"
       />
       <Text>English</Text>
     </Flex>,
@@ -62,6 +63,7 @@ const localeObg = {
         svg
         className="emojiFlag"
         style={{ borderRadius: "0px", marginRight: "0.25rem" }}
+        alt="flag"
       />
       <Text>Korean</Text>
     </Flex>,
@@ -73,6 +75,7 @@ const localeObg = {
         svg
         className="emojiFlag"
         style={{ borderRadius: "0px", marginRight: "0.25rem" }}
+        alt="flag"
       />
       <Text>한국어</Text>
     </Flex>,
@@ -82,6 +85,7 @@ const localeObg = {
         svg
         className="emojiFlag"
         style={{ borderRadius: "0px", marginRight: "0.25rem" }}
+        alt="flag"
       />
       <Text>영어</Text>
     </Flex>,
