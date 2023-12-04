@@ -17,6 +17,7 @@ function CustomAvatar({ isBigAvatar }: ICustomAvatarProps) {
         width={size}
         height={size}
         style={{ borderRadius: isBigAvatar ? "16px" : "12px" }}
+        priority={true}
       />
     </Flex>
   );
