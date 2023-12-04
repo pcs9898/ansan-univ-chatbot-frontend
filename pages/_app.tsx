@@ -3,7 +3,7 @@ import chakraColorModeConfig from "@/src/commons/theme/config.theme";
 import { customTheme } from "@/src/commons/theme/customTheme.theme";
 import Layouts from "@/src/components/layouts/index";
 import { ColorModeScript } from "@chakra-ui/react";
-
+import { ChakraProvider } from "@chakra-ui/provider";
 import { Global, css } from "@emotion/react";
 import { QueryClientProvider } from "@tanstack/react-query";
 import Cookies from "js-cookie";
@@ -14,11 +14,6 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { RecoilRoot } from "recoil";
 import nextI18NextConfig from "../next-i18next.config.js";
-
-import dynamic from "next/dynamic";
-const ChakraProvider = dynamic(() =>
-  import("@chakra-ui/provider").then((mod) => mod.ChakraProvider)
-);
 
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();

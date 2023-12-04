@@ -3,7 +3,7 @@ import { useTranslation } from "next-i18next";
 
 export default function FailMessage() {
   const { t } = useTranslation();
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
 
   return (
     <Card

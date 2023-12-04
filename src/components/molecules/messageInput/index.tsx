@@ -7,24 +7,20 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 import {
-  eventNameState,
   isInputButtonLoading,
   messageTextState,
-  refreshGreetingState,
 } from "@/src/commons/libraries/recoil/recoil";
 import { ChangeEvent, useState } from "react";
 
 export default function MessageInput() {
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useRecoilState(isInputButtonLoading);
-  const [messageText, setMessageText] = useRecoilState(messageTextState);
-  const eventName = useRecoilValue(eventNameState);
-  const setRefreshGreeting = useSetRecoilState(refreshGreetingState);
+  const setMessageText = useSetRecoilState(messageTextState);
   const [text, setText] = useState("");
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);

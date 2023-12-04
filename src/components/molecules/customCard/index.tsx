@@ -1,11 +1,10 @@
 import {
   eventNameState,
-  languageCodeState,
   messageTextState,
 } from "@/src/commons/libraries/recoil/recoil";
 import { openPageInNewTab } from "@/src/commons/utils/openPageInNewTab";
 import { Box, Button, Card, Flex, Text, useColorMode } from "@chakra-ui/react";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 interface ICustomCardProps {
   customCardProps: {
@@ -27,9 +26,7 @@ export default function CustomCard({ customCardProps }: ICustomCardProps) {
   const { texts, buttons } = customCardProps;
   const setEventName = useSetRecoilState(eventNameState);
   const setMessageText = useSetRecoilState(messageTextState);
-  const { colorMode, toggleColorMode } = useColorMode();
-  const [languageCode, setLanguageCode] = useRecoilState(languageCodeState);
-  // const [isSmallScreen] = useMediaQuery("(max-width: 30em)");
+  const { colorMode } = useColorMode();
 
   const handleOnClick = ({ postback, buttonText }: IHandleOnClick) => {
     setMessageText(buttonText);

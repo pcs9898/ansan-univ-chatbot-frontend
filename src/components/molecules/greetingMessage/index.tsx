@@ -3,7 +3,7 @@ import { useTranslation } from "next-i18next";
 
 export default function GreetingMessage() {
   const { t } = useTranslation();
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
 
   return (
     <Card

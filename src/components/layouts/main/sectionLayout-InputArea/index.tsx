@@ -5,16 +5,20 @@ import {
   refreshGreetingState,
 } from "@/src/commons/libraries/recoil/recoil";
 import MessageInput from "@/src/components/molecules/messageInput";
-import MicrophoneInput from "@/src/components/molecules/microphoneInput";
 import { Flex, IconButton, useColorMode } from "@chakra-ui/react";
 import RefreshOutlinedIcon from "@mui/icons-material/RefreshOutlined";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import dynamic from "next/dynamic";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+
+const MicrophoneInput = dynamic(
+  () => import("../../../molecules/microphoneInput")
+);
 
 export default function SectionLayoutInputArea({}) {
   const inputMethod = useRecoilValue(inputMethodState);
   const setRefreshGreeting = useSetRecoilState(refreshGreetingState);
-  const [isLoading, setIsLoading] = useRecoilState(isInputButtonLoading);
-  const { colorMode, toggleColorMode } = useColorMode();
+  const isLoading = useRecoilValue(isInputButtonLoading);
+  const { colorMode } = useColorMode();
 
   return (
     <Flex

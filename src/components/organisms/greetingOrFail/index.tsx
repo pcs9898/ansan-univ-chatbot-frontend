@@ -1,9 +1,11 @@
 import { Flex } from "@chakra-ui/react";
 import CustomAvatar from "../../molecules/customAvatar";
-import FailMessage from "../../molecules/failMessage";
 import FormatTime from "../../molecules/formatTime";
 import GreetingCard from "../../molecules/greetingCard";
 import GreetingMessage from "../../molecules/greetingMessage";
+import dynamic from "next/dynamic";
+
+const FailMessage = dynamic(() => import("../../molecules/failMessage"));
 
 interface IGreetingOrFailProps {
   greetingOrFailOption: "greeting" | "fail";

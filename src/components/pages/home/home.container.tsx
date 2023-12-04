@@ -2,7 +2,6 @@ import { useMutation } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { QueryEventMutation, QueryTextMutation } from "./home.quries";
-
 import {
   LANGUAGE_CODE_ENUM,
   bottomListRefState,
@@ -15,10 +14,14 @@ import {
 } from "@/src/commons/libraries/recoil/recoil";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
-import CustomCards from "../../organisms/customCards";
 import GreetingOrFail from "../../organisms/greetingOrFail";
-import MyMessageWithFormat from "../../organisms/myMessageWithFormat";
 import HomePresenter from "../../templates/home/home.presenter";
+import dynamic from "next/dynamic";
+
+const CustomCards = dynamic(() => import("../../organisms/customCards"));
+const MyMessageWithFormat = dynamic(
+  () => import("../../organisms/myMessageWithFormat")
+);
 
 enum SENDER_ENUM {
   bot = "bot",

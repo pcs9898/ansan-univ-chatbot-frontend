@@ -60,8 +60,7 @@ export default function GreetingCard() {
   const router = useRouter();
   const setEventName = useSetRecoilState(eventNameState);
   const setMessageText = useSetRecoilState(messageTextState);
-  const { colorMode, toggleColorMode } = useColorMode();
-  // const [isSmallScreen] = useMediaQuery("(max-width: 30em)"); // sm: 30em
+  const { colorMode } = useColorMode();
 
   const handleOnClick = (i: number) => {
     if (router.locale === "ko") {

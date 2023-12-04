@@ -2,17 +2,19 @@ import { bottomListRefState } from "@/src/commons/libraries/recoil/recoil";
 import { Box, Flex, Show } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import { ReactNode, useEffect, useRef } from "react";
-import { useRecoilState } from "recoil";
-import AsideCard from "../organisms/aisdeCard";
+import { useSetRecoilState } from "recoil";
 import Header from "../organisms/header";
 import MainLayout from "./main";
+import dynamic from "next/dynamic";
+
+const AsideCard = dynamic(() => import("../organisms/aisdeCard"));
 
 interface ILayoutsProps {
   children: ReactNode;
 }
 
 export default function Layouts({ children }: ILayoutsProps) {
-  const [bottomListRef, setBottomListRef] = useRecoilState(bottomListRefState);
+  const setBottomListRef = useSetRecoilState(bottomListRefState);
   const bottomScrollRef = useRef(null);
 
   useEffect(() => {

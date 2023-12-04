@@ -21,7 +21,7 @@ import { useEffect, useState } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 
 const pulse = keyframes`
   0% { transform: scale(1); }
@@ -37,18 +37,14 @@ const blink = keyframes`
 
 export default function MicrophoneInput() {
   const [recording, setRecording] = useState(false);
-  const {
-    transcript,
-    listening,
-    resetTranscript,
-    browserSupportsSpeechRecognition,
-  } = useSpeechRecognition();
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { transcript, resetTranscript, browserSupportsSpeechRecognition } =
+    useSpeechRecognition();
+  const { colorMode } = useColorMode();
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [silenceTimeoutId, setSilenceTimeoutId] = useState(null);
   const { t } = useTranslation();
-  const [messageText, setMessageText] = useRecoilState(messageTextState);
+  const setMessageText = useSetRecoilState(messageTextState);
   const [isLoading, setIsLoading] = useRecoilState(isInputButtonLoading);
   const languageCode = useRecoilValue(languageCodeState);
   const [disableMicBtn, setDisableMicBtn] = useState(false);
