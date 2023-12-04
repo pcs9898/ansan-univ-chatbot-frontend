@@ -1,14 +1,13 @@
 import { Flex } from "@chakra-ui/react";
 import FormatTime from "../../molecules/formatTime";
 import MyMessage from "../../molecules/myMessage";
+import { memo } from "react";
 
 interface IMyMessageWithFormatProps {
   text: string;
 }
 
-export default function MyMessageWithFormat({
-  text,
-}: IMyMessageWithFormatProps) {
+function MyMessageWithFormat({ text }: IMyMessageWithFormatProps) {
   return (
     <Flex alignItems="flex-end" flexDir="column" w="100%">
       <MyMessage text={text} />
@@ -16,3 +15,5 @@ export default function MyMessageWithFormat({
     </Flex>
   );
 }
+
+export default memo(MyMessageWithFormat);

@@ -5,6 +5,7 @@ import {
 import { Button, Flex, Grid, Text, useColorMode } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
 
 const GreetingCardButtonIcons = [
@@ -62,6 +63,14 @@ export default function GreetingCard() {
   const setMessageText = useSetRecoilState(messageTextState);
   const { colorMode } = useColorMode();
 
+  const [bgColor, setBgColor] = useState("transparent");
+
+  useEffect(() => {
+    const realColorMode = localStorage.getItem("chakra-ui-color-mode");
+
+    setBgColor(realColorMode === "light" ? "cardBgColorLight" : "gray.700");
+  }, [colorMode]);
+
   const handleOnClick = (i: number) => {
     if (router.locale === "ko") {
       setMessageText(GreetingCardClickedMyMessageKO[i]);
@@ -77,7 +86,7 @@ export default function GreetingCard() {
       <Grid
         gridTemplateColumns="repeat(3, 1fr)"
         gap="0.5rem"
-        bgColor={colorMode === "light" ? "cardBgColorLight" : "gray.700"}
+        bgColor={bgColor}
         py="0.625rem"
         px="0.75rem"
         w={{ base: "85%" }}

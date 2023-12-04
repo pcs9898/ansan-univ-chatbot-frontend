@@ -1,6 +1,5 @@
-import { Image } from "@chakra-ui/react";
-import { useTranslation } from "next-i18next";
-
+import { Flex } from "@chakra-ui/react";
+import Image from "next/image";
 import { memo } from "react";
 
 interface ICustomAvatarProps {
@@ -8,18 +7,18 @@ interface ICustomAvatarProps {
 }
 
 function CustomAvatar({ isBigAvatar }: ICustomAvatarProps) {
-  const { t } = useTranslation();
+  const size = isBigAvatar ? 54 : 40;
 
   return (
-    <Image
-      alt="avatar image"
-      src="/avatarImage.svg"
-      style={
-        isBigAvatar
-          ? { width: "3.4rem", height: "3.4rem" }
-          : { width: "2.5rem", height: "2.5rem" }
-      }
-    />
+    <Flex alignItems="flex-start">
+      <Image
+        alt="avatar image"
+        src="/avatarImage.svg"
+        width={size}
+        height={size}
+        style={{ borderRadius: isBigAvatar ? "16px" : "12px" }}
+      />
+    </Flex>
   );
 }
 

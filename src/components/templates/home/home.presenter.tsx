@@ -19,8 +19,9 @@ export default function HomePresenter({
       gap="1rem"
       px="1rem"
       w="100%"
+      // mt="6rem"
       pt="6rem"
-      pb={inputMethod === INPUT_METHOD_ENUM.keyboard ? "6rem" : "7.5rem"}
+      mb={inputMethod === INPUT_METHOD_ENUM.keyboard ? "6rem" : "7.5rem"}
     >
       {renderedChatList}
     </VStack>

@@ -1,5 +1,5 @@
 import { bottomListRefState } from "@/src/commons/libraries/recoil/recoil";
-import { Box, Flex, Show } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import { ReactNode, useEffect, useRef } from "react";
 import { useSetRecoilState } from "recoil";
@@ -29,7 +29,7 @@ export default function Layouts({ children }: ILayoutsProps) {
       overflowY="auto"
       overflowX="hidden"
       borderRadius="0px"
-      gap="2.25rem"
+      // gap="2.25rem"
       ref={bottomScrollRef}
       //@ts-ignore
       styles={css`
@@ -53,7 +53,12 @@ export default function Layouts({ children }: ILayoutsProps) {
         scrollbar-color: #888 transparent;
       `}
     >
-      <Box w={{ base: "100%", lg: "40rem" }} maxW="40rem" borderRadius="0px">
+      <Box
+        w={{ base: "100%", lg: "40rem" }}
+        maxW="40rem"
+        borderRadius="0px"
+        justifySelf={{ lg: "flex-start" }}
+      >
         <Box
           position="fixed"
           top={0}
@@ -68,17 +73,18 @@ export default function Layouts({ children }: ILayoutsProps) {
 
         <MainLayout>{children}</MainLayout>
       </Box>
-      <Show above="lg">
-        <Flex
-          position="sticky"
-          top={0}
-          bottom={0}
-          h="100dvh"
-          alignItems="center"
-        >
-          <AsideCard />
-        </Flex>
-      </Show>
+
+      <Flex
+        display={{ base: "none", lg: "flex" }}
+        position="sticky"
+        top={0}
+        bottom={0}
+        h="100dvh"
+        alignItems="center"
+        w="16.5rem"
+      >
+        <AsideCard />
+      </Flex>
     </Flex>
   );
 }

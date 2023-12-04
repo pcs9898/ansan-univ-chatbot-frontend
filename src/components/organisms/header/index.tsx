@@ -23,7 +23,6 @@ import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import ReactCountryFlag from "react-country-flag";
 import { useSpeechRecognition } from "react-speech-recognition";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import CustomAvatar from "../../molecules/customAvatar";
@@ -42,6 +41,7 @@ function Header() {
   const { browserSupportsSpeechRecognition } = useSpeechRecognition();
   const [supportMic, setSupportMic] = useState(true);
   const [micAccess, setMicAccess] = useState(false);
+  const [bgColor, setBgColor] = useState("transparent");
 
   const changeLocale = (locale: string) => {
     Cookies.set("locale", locale);
@@ -71,6 +71,12 @@ function Header() {
     }
   }, [browserSupportsSpeechRecognition]);
 
+  useEffect(() => {
+    const realColorMode = localStorage.getItem("chakra-ui-color-mode");
+
+    setBgColor(realColorMode === "light" ? "white" : "gray.800");
+  }, [colorMode]);
+
   return (
     <Flex
       id="header"
@@ -80,7 +86,7 @@ function Header() {
       alignItems="center"
       justifyContent="space-between"
       zIndex={10}
-      bgColor={colorMode === "light" ? "white" : "gray.800"}
+      bgColor={bgColor}
     >
       <Flex alignItems="center" gap="0.625rem">
         <CustomAvatar isBigAvatar={true} />

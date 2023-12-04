@@ -8,6 +8,7 @@ import MessageInput from "@/src/components/molecules/messageInput";
 import { Flex, IconButton, useColorMode } from "@chakra-ui/react";
 import RefreshOutlinedIcon from "@mui/icons-material/RefreshOutlined";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 const MicrophoneInput = dynamic(
@@ -19,6 +20,13 @@ export default function SectionLayoutInputArea({}) {
   const setRefreshGreeting = useSetRecoilState(refreshGreetingState);
   const isLoading = useRecoilValue(isInputButtonLoading);
   const { colorMode } = useColorMode();
+  const [bgColor, setBgColor] = useState("transparent");
+
+  useEffect(() => {
+    const realColorMode = localStorage.getItem("chakra-ui-color-mode");
+
+    setBgColor(realColorMode === "light" ? "white" : "gray.800");
+  }, [colorMode]);
 
   return (
     <Flex
@@ -42,7 +50,7 @@ export default function SectionLayoutInputArea({}) {
         maxW="40rem"
         alignItems="center"
         h="inherit"
-        bgColor={colorMode === "light" ? "white" : "gray.800"}
+        bgColor={bgColor}
         borderRadius="0px"
       >
         <IconButton

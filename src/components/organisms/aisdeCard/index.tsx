@@ -1,5 +1,6 @@
-import { Flex, Image, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
+import Image from "next/image";
 import QR from "qrcode.react";
 import { useEffect, useState } from "react";
 
@@ -25,7 +26,6 @@ export default function AsideCard() {
       w="16.5rem"
       h="min-content"
       flexDir="column"
-      justifyContent="center"
       alignItems="center"
       gap="2.5rem"
     >
@@ -39,8 +39,14 @@ export default function AsideCard() {
         {"."}
       </Text>
 
-      <Image alt="logoImage" src="/avatarImage.svg" w="12rem" />
-      <Flex flexDir="column" gap="1rem">
+      <Image
+        alt="logoImage"
+        src="/avatarImage.svg"
+        width={192}
+        height={192}
+        priority={true}
+      />
+      <Flex flexDir="column" gap="1rem" minH="12.5rem">
         <Text fontWeight="bold" textAlign="center">
           {t("asideCardText")}
         </Text>

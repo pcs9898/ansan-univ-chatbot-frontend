@@ -1,6 +1,5 @@
 import {
   Button,
-  Image,
   Input,
   InputGroup,
   InputRightElement,
@@ -13,7 +12,8 @@ import {
   isInputButtonLoading,
   messageTextState,
 } from "@/src/commons/libraries/recoil/recoil";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function MessageInput() {
   const { t } = useTranslation();
@@ -21,6 +21,13 @@ export default function MessageInput() {
   const setMessageText = useSetRecoilState(messageTextState);
   const [text, setText] = useState("");
   const { colorMode } = useColorMode();
+  const [bgColor, setBgColor] = useState("transparent");
+
+  useEffect(() => {
+    const realColorMode = localStorage.getItem("chakra-ui-color-mode");
+
+    setBgColor(realColorMode === "light" ? "cardBgColorLight" : "gray.700");
+  }, [colorMode]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
@@ -48,7 +55,7 @@ export default function MessageInput() {
             onSubmitQueryTextMutation();
           }
         }}
-        bgColor={colorMode === "light" ? "cardBgColorLight" : "gray.700"}
+        bgColor={bgColor}
         borderRadius="1.125rem"
         h="3rem"
         px="0.875rem"
@@ -66,8 +73,8 @@ export default function MessageInput() {
             <Image
               alt="send button"
               src="/inputSendIcon.svg"
-              w="1.5rem"
-              h="1.5rem"
+              width={24}
+              height={24}
               style={{ fill: "myMessageColorLight" }}
             />
           </Button>

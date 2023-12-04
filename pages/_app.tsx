@@ -59,6 +59,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                 }
               `}
             />
+
             <Component {...pageProps} />
           </Layouts>
         </QueryClientProvider>

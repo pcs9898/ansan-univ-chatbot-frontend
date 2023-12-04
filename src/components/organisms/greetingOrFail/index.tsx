@@ -4,6 +4,7 @@ import FormatTime from "../../molecules/formatTime";
 import GreetingCard from "../../molecules/greetingCard";
 import GreetingMessage from "../../molecules/greetingMessage";
 import dynamic from "next/dynamic";
+import { memo } from "react";
 
 const FailMessage = dynamic(() => import("../../molecules/failMessage"));
 
@@ -11,9 +12,7 @@ interface IGreetingOrFailProps {
   greetingOrFailOption: "greeting" | "fail";
 }
 
-export default function GreetingOrFail({
-  greetingOrFailOption,
-}: IGreetingOrFailProps) {
+function GreetingOrFail({ greetingOrFailOption }: IGreetingOrFailProps) {
   return (
     <Flex gap="0.5rem" w="100%">
       <CustomAvatar />
@@ -33,3 +32,5 @@ export default function GreetingOrFail({
     </Flex>
   );
 }
+
+export default GreetingOrFail;
