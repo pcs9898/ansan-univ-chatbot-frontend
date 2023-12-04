@@ -5,29 +5,12 @@ import {
   inputMethodState,
   languageCodeState,
 } from "@/src/commons/libraries/recoil/recoil";
-import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 import {
   Button,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerHeader,
-  DrawerOverlay,
   Flex,
   IconButton,
-  Menu,
-  MenuButton,
-  MenuItemOption,
-  MenuList,
-  MenuOptionGroup,
   Show,
-  Switch,
-  Tab,
-  TabList,
-  Tabs,
   Text,
-  VStack,
   useColorMode,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -37,76 +20,16 @@ import MicIcon from "@mui/icons-material/Mic";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Cookies from "js-cookie";
 import { useTranslation } from "next-i18next";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import ReactCountryFlag from "react-country-flag";
 import { useSpeechRecognition } from "react-speech-recognition";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import CustomAvatar from "../../molecules/customAvatar";
 
-const localeObg = {
-  en: [
-    <Flex key="en" gap="0.25rem" alignItems="center">
-      <ReactCountryFlag
-        countryCode="US"
-        svg
-        className="emojiFlag"
-        style={{ borderRadius: "0px", marginRight: "0.25rem" }}
-        alt="flag"
-      />
-      <Text>English</Text>
-    </Flex>,
-    <Flex key="kr" gap="0.25rem" alignItems="center">
-      <ReactCountryFlag
-        countryCode="KR"
-        svg
-        className="emojiFlag"
-        style={{ borderRadius: "0px", marginRight: "0.25rem" }}
-        alt="flag"
-      />
-      <Text>Korean</Text>
-    </Flex>,
-  ],
-  ko: [
-    <Flex key="en" gap="0.25rem" alignItems="center">
-      <ReactCountryFlag
-        countryCode="KR"
-        svg
-        className="emojiFlag"
-        style={{ borderRadius: "0px", marginRight: "0.25rem" }}
-        alt="flag"
-      />
-      <Text>한국어</Text>
-    </Flex>,
-    <Flex key="kr" gap="0.25rem" alignItems="center">
-      <ReactCountryFlag
-        countryCode="US"
-        svg
-        className="emojiFlag"
-        style={{ borderRadius: "0px", marginRight: "0.25rem" }}
-        alt="flag"
-      />
-      <Text>영어</Text>
-    </Flex>,
-  ],
-};
-
-const test = {
-  position: "fixed",
-  top: 0,
-  left: 52,
-  width: 640,
-  transform: "translateZ(0)",
-};
-
-interface IHeaderProps {
-  position: any;
-  top: any;
-  left: any;
-  width: any;
-  transform: any;
-}
+const CustomMenu = dynamic(() => import("../../molecules/customMenu"));
+const CustomDrawer = dynamic(() => import("../../molecules/customDrawer"));
 
 function Header() {
   const router = useRouter();
@@ -118,8 +41,6 @@ function Header() {
   const { browserSupportsSpeechRecognition } = useSpeechRecognition();
   const [supportMic, setSupportMic] = useState(true);
   const [micAccess, setMicAccess] = useState(false);
-
-  const currentLocale = router.locale;
 
   const changeLocale = (locale: string) => {
     Cookies.set("locale", locale);
@@ -216,70 +137,11 @@ function Header() {
           />
         </Show>
 
-        <Drawer placement="bottom" onClose={onClose} isOpen={isOpen}>
-          <DrawerOverlay style={{ borderRadius: "0px" }} />
-          <DrawerContent borderTopRadius="1.125rem" borderBottomRadius="0px">
-            <DrawerCloseButton />
-            <DrawerHeader style={{ borderRadius: "0px" }}>
-              {t("settingsHeader")}
-            </DrawerHeader>
-            <DrawerBody>
-              <VStack gap="0.5rem">
-                {/* Dark mode */}
-                <Flex w="100%" justifyContent="space-between">
-                  <Flex fontWeight="semibold" alignItems="center">
-                    {t("settingsDarkMode")}
-                  </Flex>
-                  <Switch
-                    size="lg"
-                    variant={{ base: "unstyled", sm: "solid" }}
-                    defaultChecked={colorMode === "dark" ? true : false}
-                    onChange={toggleColorMode}
-                    colorScheme="mainColorLight"
-                    _checked={{ bg: "mainColorLight" }}
-                  />
-                </Flex>
-
-                {/* language setting */}
-                <Flex w="100%" justifyContent="space-between">
-                  <Flex fontWeight="semibold" alignItems="center">
-                    {t("settingsLanguage")}
-                  </Flex>
-                  <Tabs
-                    variant="solid-rounded"
-                    borderRadius="0px"
-                    defaultIndex={router.locale === "ko" ? 0 : 1}
-                  >
-                    <TabList>
-                      <Tab
-                        _selected={{
-                          bg: "mainColorLight",
-                          color: "white",
-                        }}
-                        borderRadius="12px"
-                        fontWeight="semibold"
-                        onClick={() => changeLocale("ko")}
-                      >
-                        {t("settingsLanguageBtn1")}
-                      </Tab>
-                      <Tab
-                        _selected={{
-                          bg: "mainColorLight",
-                          color: "white",
-                        }}
-                        borderRadius="12px"
-                        fontWeight="semibold"
-                        onClick={() => changeLocale("en")}
-                      >
-                        {t("settingsLanguageBtn2")}
-                      </Tab>
-                    </TabList>
-                  </Tabs>
-                </Flex>
-              </VStack>
-            </DrawerBody>
-          </DrawerContent>
-        </Drawer>
+        <CustomDrawer
+          onClose={onClose}
+          isOpen={isOpen}
+          changeLocale={changeLocale}
+        />
 
         <Show above="34rem">
           <IconButton
@@ -291,49 +153,7 @@ function Header() {
             display="flex"
             justifyContent="center"
           />
-          <Menu matchWidth={true} placement="bottom-end">
-            {({ isOpen }) => (
-              <>
-                <MenuButton
-                  as={Button}
-                  variant={{ base: "unstyled", sm: "ghost" }}
-                  isActive={isOpen}
-                  rightIcon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
-                  px="0.5rem"
-                >
-                  {localeObg[currentLocale][0]}
-                </MenuButton>
-                <MenuList
-                  p="0.5rem"
-                  style={{
-                    position: "absolute",
-                    right: 0,
-                    transform: "translateX(100%)",
-                    width: "20px",
-                  }}
-                >
-                  <MenuOptionGroup
-                    defaultValue={currentLocale}
-                    type="radio"
-                    w="50%"
-                  >
-                    <MenuItemOption value={currentLocale} fontWeight="semibold">
-                      {localeObg[currentLocale][0]}
-                    </MenuItemOption>
-                    <MenuItemOption
-                      value={currentLocale === "en" ? "ko" : "en"}
-                      onClick={() =>
-                        changeLocale(currentLocale === "en" ? "ko" : "en")
-                      }
-                      fontWeight="semibold"
-                    >
-                      {localeObg[currentLocale][1]}
-                    </MenuItemOption>
-                  </MenuOptionGroup>
-                </MenuList>
-              </>
-            )}
-          </Menu>
+          <CustomMenu changeLocale={changeLocale} />
         </Show>
       </Flex>
     </Flex>

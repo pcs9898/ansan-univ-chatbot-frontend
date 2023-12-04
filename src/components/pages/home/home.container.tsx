@@ -34,10 +34,12 @@ export default function HomeContainer() {
   const [isLoading, setIsLoading] = useRecoilState(isInputButtonLoading);
   const [messageText, setMessageText] = useRecoilState(messageTextState);
   const [eventName, setEventName] = useRecoilState(eventNameState);
-  const [bottomListRef, setBottomListRef] = useRecoilState(bottomListRefState);
+  const bottomListRef = useRecoilValue(bottomListRefState);
   const [refreshGreeting, setRefreshGreeting] =
     useRecoilState(refreshGreetingState);
-  const [chatList, setChatList] = useState([] as any);
+  const [chatList, setChatList] = useState([
+    { sender: SENDER_ENUM.bot, message: "greeting" },
+  ]);
   const router = useRouter();
   const [languageCode, setLanguageCode] = useRecoilState(languageCodeState);
   const inputMethod = useRecoilValue(inputMethodState);
@@ -103,11 +105,11 @@ export default function HomeContainer() {
       setLanguageCode(LANGUAGE_CODE_ENUM.ko);
     }
 
-    const newMessage = {
-      sender: SENDER_ENUM.bot,
-      message: "greeting",
-    };
-    addNewMessage(newMessage);
+    // const newMessage = {
+    //   sender: SENDER_ENUM.bot,
+    //   message: "greeting",
+    // };
+    // addNewMessage(newMessage);
   }, []);
 
   useEffect(() => {
@@ -115,13 +117,18 @@ export default function HomeContainer() {
       setFirstRender(false);
       return;
     }
-    setChatList([]);
+    setChatList([
+      {
+        sender: SENDER_ENUM.bot,
+        message: "greeting",
+      },
+    ]);
 
-    const newMessage = {
-      sender: SENDER_ENUM.bot,
-      message: "greeting",
-    };
-    addNewMessage(newMessage);
+    // const newMessage = {
+    //   sender: SENDER_ENUM.bot,
+    //   message: "greeting",
+    // };
+    // addNewMessage(newMessage);
   }, [languageCode]);
 
   useEffect(() => {

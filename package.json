@@ -1,12 +1,14 @@
 {
   "name": "ansan-univ-chatbot",
   "version": "0.1.0",
+  "sideEffects": false,
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start ",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
@@ -27,19 +29,17 @@
     "next-i18next": "^14.0.3",
     "qrcode.react": "^3.1.0",
     "react": "^18",
-    "react-bootstrap-icons": "^1.10.3",
     "react-country-flag": "^3.1.0",
     "react-dom": "^18",
     "react-i18next": "^13.3.1",
     "react-query": "^3.39.3",
     "react-speech-recognition": "^3.10.0",
     "react-spinners": "^0.13.8",
-    "react-use-clipboard": "^1.0.9",
     "recoil": "^0.7.7",
-    "regenerator-runtime": "^0.14.0",
-    "uuid": "^9.0.1"
+    "regenerator-runtime": "^0.14.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^14.0.3",
     "@types/axios": "^0.14.0",
     "@types/dialogflow": "^4.0.4",
     "@types/js-cookie": "^3.0.5",
