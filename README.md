@@ -5,7 +5,7 @@
 - 일반적인 대학교 챗봇과 비슷한 기능들(학사일정, 도서관, 기숙사, 학식 등등)을 제공합니다.
 
 
-## Figma 링크
+## Figma
 #### 작동화면과 디자인이 다르게 느껴질수 있는데 Figma디자인과 대부분 컴포넌트는 같으나 막상 구현하니 촌스러운 느낌이 있어 색상 변경과 캐릭터를 사용안하고 로고를 사용하였습니다.
 - [Fimga 링크](https://www.figma.com/file/UvflORCpX95jk9UvvBSdSj/ansan-univ-chatbot?type=design&node-id=2206%3A22&mode=design&t=bssPUKbjb4sZq64L-1)
 
