@@ -4,6 +4,7 @@ import {
 } from "@/src/commons/libraries/recoil/recoil";
 import { openPageInNewTab } from "@/src/commons/utils/openPageInNewTab";
 import { Box, Button, Card, Flex, Text, useColorMode } from "@chakra-ui/react";
+import { memo } from "react";
 import { useSetRecoilState } from "recoil";
 
 interface ICustomCardProps {
@@ -22,7 +23,7 @@ interface IHandleOnClick {
   buttonText: string;
 }
 
-export default function CustomCard({ customCardProps }: ICustomCardProps) {
+function CustomCard({ customCardProps }: ICustomCardProps) {
   const { texts, buttons } = customCardProps;
   const setEventName = useSetRecoilState(eventNameState);
   const setMessageText = useSetRecoilState(messageTextState);
@@ -123,3 +124,5 @@ export default function CustomCard({ customCardProps }: ICustomCardProps) {
     </Card>
   );
 }
+
+export default memo(CustomCard);

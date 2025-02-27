@@ -5,7 +5,7 @@ import {
 import { Button, Flex, Grid, Text, useColorMode } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { useSetRecoilState } from "recoil";
 
 const GreetingCardButtonIcons = [
@@ -56,7 +56,7 @@ const GreetingCardClickedMyMessageEN = [
   "💻 Course Registration",
 ];
 
-export default function GreetingCard() {
+function GreetingCard() {
   const { t } = useTranslation();
   const router = useRouter();
   const setEventName = useSetRecoilState(eventNameState);
@@ -138,3 +138,5 @@ export default function GreetingCard() {
     </>
   );
 }
+
+export default GreetingCard;

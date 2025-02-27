@@ -3,15 +3,14 @@ import {
   inputMethodState,
 } from "@/src/commons/libraries/recoil/recoil";
 import { VStack } from "@chakra-ui/react";
+import { memo } from "react";
 import { useRecoilValue } from "recoil";
 
 interface IHomePresenterProps {
   renderedChatList: any;
 }
 
-export default function HomePresenter({
-  renderedChatList,
-}: IHomePresenterProps) {
+function HomePresenter({ renderedChatList }: IHomePresenterProps) {
   const inputMethod = useRecoilValue(inputMethodState);
 
   return (
@@ -27,3 +26,5 @@ export default function HomePresenter({
     </VStack>
   );
 }
+
+export default memo(HomePresenter);
