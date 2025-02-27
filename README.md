@@ -9,8 +9,8 @@
 #### 작동화면과 디자인이 다르게 느껴질수 있는데 Figma디자인과 대부분 컴포넌트는 같으나 막상 구현하니 촌스러운 느낌이 있어 색상 변경과 캐릭터를 사용안하고 로고를 사용하였습니다.
 - [Fimga 링크](https://www.figma.com/file/UvflORCpX95jk9UvvBSdSj/ansan-univ-chatbot?type=design&node-id=2206%3A22&mode=design&t=bssPUKbjb4sZq64L-1)
 
-## 백엔드 프로젝트 링크
-- [백엔드 프로젝트 링크](https://github.com/pcs9898/ansan-univ-chatbot-backend)
+## 백엔드 프로젝트
+- [백엔드 프로젝트 깃헙 링크](https://github.com/pcs9898/ansan-univ-chatbot-backend)
 
 ## 프론트엔드 프로젝트 제작 기간 📅 && 참여 인원 🧑‍🤝‍🧑
 
